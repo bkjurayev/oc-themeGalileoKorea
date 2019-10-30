@@ -1,0 +1,46 @@
+==
+{% set author = post.author %}
+<div class="post card border-radius mb-3">
+	<div class="card-header d-flex bg-transparent">
+		<div class="avatar">
+			<a href="#">
+				<img class="img-fluid" src="{{ author.avatar ? author.avatar.getThumb(50, 50, {mode: 'crop'}) : 'assets/images/boss-baby.jpg'|theme }}" alt="">
+			</a>
+		</div>
+		<div class="info flex-grow-1">
+			<h6><a href="#" class="text-dark"> {{ author.name ~ ' ' ~ author.surname }} <img class="img-fluid" src="{{ author.getLevel('vip') }}" style="max-width: 30px; margin-top: -10px" alt=""> </a></h6>
+			<small style="color: #a7aaad!important;">{{ post.created_at | date('d.m.y') }}</small>
+		</div>
+		{% if user.id == author.id %}
+			<div class="icon d-flex">
+				<span class="ml-2">
+					<a  href="javascript:;" 
+						data-request="Posts::onDeletePost"
+						data-request-data="id: {{ post.id }}"
+						data-request-flash
+						data-request-update="'posts/posts-list': '.wall-posts'"
+						data-request-confirm="Вы действительно хотите удалить пост?"
+						title="Удалить" style="color: #a7aaad!important;">
+						<i class="far fa-times"></i>
+					</a>
+				</span>
+				{#<i class="far fa-ellipsis-v muted-text"></i>#}
+			</div>
+		{% endif %}
+	</div>
+	{% if post.title %}
+		<div class="card-body">
+			<h6 class="h6 mb-0">{{post.title}}</h6>
+		</div>
+	{% endif %}
+	<div class="card-img text-center">
+		<img src="{{post.properties.link}}" alt="" class="">
+	</div>
+	
+	{#<div class="card-body">										
+		<p class="card-text">Для меня оно идеально! Хотя по прежнему не очень вписывается в комнату, мне остается только ждать, достроят мою квартиру и сделать все с нуля! Синхрония, как бы это ни казалось парадоксальным, текстологически иллюстрирует прозаический акцент</p>										
+	</div>#}																		
+
+	{% partial 'posts/post-footer' post = post %}
+
+</div>

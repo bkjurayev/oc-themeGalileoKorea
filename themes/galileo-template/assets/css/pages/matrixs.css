@@ -1,0 +1,633 @@
+/*==========  Activation page  =============*/
+.activation-page .blocks .block-left {
+	width: 2rem;
+	min-height: 3rem;
+	border-top-left-radius: 10px; 
+	border-bottom-left-radius: 10px;
+}
+
+.activation-page .blocks .block-right .mx-icon {
+	width: 64px;
+	height: 64px;
+}
+
+.activation-page .blocks .block-right .mx-icon.active {
+	background-color: #DDF3DE;
+}
+
+.activation-page .blocks .block-right .mx-icon {
+	background-color: #E3E8EB;
+}
+
+.activation-page .blocks .block-right .mx-icon span {
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+}
+
+.activation-page .blocks .block-right .mx-icon.active span {
+	background-color: #00B956;
+}
+
+
+
+
+
+
+
+
+/* ========== activation ============= */
+.matrix-page{
+	background: #E4F3FB;
+	min-height: 100%
+}
+.matrix-page .matrix-top{
+	background: transparent linear-gradient(90deg, #015FBD 0%, #128ED6 100%) 0% 0% no-repeat padding-box;
+	box-shadow: 0px 10px 15px #A1BCCF;
+	opacity: 1;
+	padding: 22px 0px;
+}
+.matrix-page i.fa-bolt {
+	font-size: 38px;
+	color: yellow;
+}	
+.matrix-page .matrix-main img{
+	background: #F2F2F2;
+	border-radius: 50px;
+	border: 1px solid #ddd;	
+	padding: 5px;
+}
+.matrix-page .child-block{
+	margin: 0px 12px;
+	padding:15px;
+}
+
+.matrix-page .matrix-main .parent-block{
+	margin-top: 30px;
+	padding: 15px;
+	box-shadow: 0px 6px 14px -5px #A1BCCF;
+}
+.matrix-page .childblocks:before{
+	content: '';
+    border-top: 1px solid #CEE6F2;
+    width: 64.8%;
+    position: absolute;
+    left: 0;
+    right: -5px;
+    top: 0px;
+    margin: 0 auto;
+    height: 30px;
+} 
+.matrix-page .child-block::before{
+	content: '';
+    border-top: 1px solid #CEE6F2;
+    width: 23px;
+    position: absolute;
+    transform: rotate(90deg);
+    left: -25px;
+    right: 0;
+    top: -27px;
+    margin: 0 auto;
+    height: 30px;
+}
+.matrix-page .child-block.center-block::before{
+	width: 70px;
+	left: -25px;
+	top: -52px;	
+}
+
+.matrix-page .child-block .message, .parent-block .message, .child-block .sitemap{font-size: 12px;}
+.matrix-page .dropbtn {
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+/* parent matrix */
+.matrix-page .activation-section .parent-block:hover img{
+	background: #00B956!important;
+}
+.matrix-page .activation-section .parent-block:hover span{
+	color: #00B956!important;
+}
+.matrix-page .activation-section .parent-block:hover i{
+	color: #00B956!important;
+}
+
+/* child matrix */
+.matrix-page .activation-section .child-block:hover img{
+	background: #00B956!important;
+}
+.matrix-page .activation-section .child-block:hover span{
+	color: #00B956!important;
+}
+.matrix-page .activation-section .child-block:hover i{
+	color: #00B956!important;
+}
+/* end hover */
+
+.matrix-page .dropbtn:hover, .dropbtn:focus {
+  background-color: #C4C4C4;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px 10px 0px 0px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  width: 175px; 
+  overflow: hidden;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.matrix-page .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+@media only screen and (max-width: 960px) {
+	.dropbtn{
+		padding: 9px!important;
+		font-size: 12px!important;
+	}
+	.dropbtn i{margin-left: 5px!important;} 		
+	
+	.matrix-page .childblocks:before{
+		width: 63.8%;
+	} 
+	.matrix-page .child-block::before{
+		
+	}
+	.matrix-page .child-block.center-block::before{
+	    width: 46px;
+	    left: -25px;
+	    top: -39px;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	.matrix-page .child-block.center-block::before{
+		width: 31px!important;
+	    left: -25px;
+	    top: -31px;
+	}
+	.activation-page .page-header {
+		display: block;
+	}
+}	 
+
+@media only screen and (max-width: 540px) {
+	.dropbtn{
+		padding: 7px!important;
+		font-size: 11px!important;
+	}	
+	.dropbtn i{margin-left: 5px!important;} 
+	.matrix-page h6, .matrix-page p, .matrix-main span.message, .matrix-main span.sitemap{font-size: 10px!important;}
+	.matrix-page .matrix-main img{
+		width: 50px;
+	}
+	.matrix-main span.message{margin-right: 0px!important;}
+	.matrix-page .parent-block{padding: 10px!important;}
+	.matrix-page .child-block{padding: 8px!important;}
+	.matrix-page .child-block .name-id{text-align: center;}
+	.matrix-page .child-block .id-number, .parent-block .id-number{margin-bottom: 0px!important;}
+	.matrix-page .child-block .img-user{
+		margin-left: auto!important;
+		margin-right: auto!important;
+	}
+	.matrix-page .child-block .fa-comment-alt{
+		margin: 0!important;
+	}	
+	.matrix-page .dropdown-content a{padding: 5px 16px!important;}
+	#myInput{padding: 0!important}
+	.dropdown-content{width: 95px!important}
+	.matrix-page .child-block {
+    	margin: 0px 4px;
+    }		
+
+    .matrix-page .childblocks:before{
+    	width: 61.4%;
+    	top: 8px;
+    }
+	.matrix-page .child-block.center-block::before{
+        width: 27px!important;	 
+	    top: -29px;
+	}    
+	.matrix-page .child-block::before{
+		width: 14px;	    
+	    top: -23px;
+	}    	    
+}
+
+/* ========== end activation ============= */
+
+
+/* ========== matrix vip bk ============= */
+
+.vip .bg-primary {
+	background-color: #973134!important;
+}
+
+.vip .bg-secondary {
+	background-color: #da303475!important;
+}
+
+.vip .closed .mx-icon {
+	background-color: #F5E4E5!important;
+	color: #CFACAD!important;
+}
+
+.polygon .bg-primary {
+	background-color: #007204!important;
+}
+
+.polygon .bg-secondary {
+	background-color: #B9CEC3!important;
+}
+
+.polygon .closed .mx-icon {
+	background-color: #E2EEE7!important;
+	color: #AAC5B7!important;
+}
+
+
+.muted-text-matrix{color: #d2d2d2!important;}
+#matrix-vip{
+	background-image: url(http://dev.galileo-intelligence.com/themes/galileo-template/assets/images/marketing/ep_naturalblack.png);
+	min-height: 100%;	
+} 
+
+#matrix-vip .line-red{
+	background: transparent linear-gradient(0.25turn, #813234, #E22E33, #813234) 0% 0% no-repeat padding-box;			
+	padding: 10px 0px;
+}
+
+#matrix-vip .line-warning{
+	background: transparent linear-gradient(0.25turn, #CBAE8D, #F6EEC7, #CBAE8D) 0% 0% no-repeat padding-box;			
+	padding: 2px 0px;
+}
+
+#matrix-vip .vip-matrix-top{
+	background: transparent linear-gradient(0.25turn, #323232, #727272, #444444) 0% 0% no-repeat padding-box;			
+	opacity: 1;
+	padding: 10px 0px;
+}
+#matrix-vip i.fa-bolt {
+	font-size: 38px;
+	color: yellow;
+}	
+#matrix-vip .matrix-main img{
+	background: #F2F2F2;
+	border-radius: 50px;
+	border: 1px solid #ddd;	
+	padding: 5px;
+}
+#matrix-vip .child-block{
+	margin: 0px 12px;
+	padding:15px;
+	background: #515151;
+}
+
+#matrix-vip .matrix-main .parent-block{
+	margin-top: 30px;
+	padding: 15px;			
+	background: #515151;
+}
+#matrix-vip .childblocks:before{
+	content: '';
+    border-top: 1px solid #535353;
+    width: 72.8%;
+    position: absolute;
+    left: 0;
+    right: -5px;
+    top: 0px;
+    margin: 0 auto;
+    height: 30px;
+} 
+#matrix-vip .child-block::before{
+	content: '';
+    border-top: 1px solid #535353;
+    width: 23px;
+    position: absolute;
+    transform: rotate(90deg);
+    left: -25px;
+    right: 0;
+    top: -27px;
+    margin: 0 auto;
+    height: 30px;
+}
+#matrix-vip .child-block.center-block::before{
+	width: 70px;
+	left: -25px;
+	top: -52px;	
+}
+
+
+/* ========== end activation ============= */
+
+
+
+
+
+
+/* ========== Polygon matrix bk ============= */
+
+#matrix-polygon{
+	background: #2E4438;
+	min-height: 100%;	
+} 
+
+#matrix-polygon .vip-matrix-top{
+	background-image: url(http://dev.galileo-intelligence.com/themes/galileo-template/assets/images/bg-polygon-matrix.png);	
+	background-repeat: repeat;
+	opacity: 1;
+	padding: 15px 0px;
+}
+#matrix-polygon i.fa-bolt {
+	font-size: 38px;
+	color: yellow;
+}	
+#matrix-polygon .matrix-main{padding-bottom: 40px;}
+#matrix-polygon .matrix-main img{
+	background: #F2F2F2;
+	border-radius: 50px;
+	border: 1px solid #ddd;	
+	padding: 5px;
+}
+#matrix-polygon .child-block{
+	margin: 0px 12px;
+	padding:15px;
+	background: #426552;
+}
+
+#matrix-polygon .matrix-main .parent-block{
+	margin-top: 30px;
+	padding: 15px;			
+	background: #426552;
+}
+#matrix-polygon .childblocks:before{
+	content: '';
+    border-top: 1px solid #535353;
+    width: 77.8%;
+    position: absolute;
+    left: 0;
+    right: -3px;
+    top: 0px;
+    margin: 0 auto;
+    height: 30px;
+} 
+#matrix-polygon .child-block::before{
+	content: '';
+    border-top: 1px solid #535353;
+    width: 23px;
+    position: absolute;
+    transform: rotate(90deg);
+    left: -25px;
+    right: 0;
+    top: -27px;
+    margin: 0 auto;
+    height: 30px;
+}
+#matrix-polygon .child-block.center-block::before{
+	width: 70px;
+	left: -25px;
+	top: -52px;	
+}
+
+#matrix-polygon .child-block .message, .parent-block .message, .child-block .sitemap{font-size: 12px;}
+#matrix-polygon .dropbtn {
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+/* parent matrix */
+#matrix-polygon .activation-section .parent-block:hover img{
+	background: #00B956!important;
+}
+#matrix-polygon .activation-section .parent-block:hover span{
+	color: #00B956!important;
+}
+#matrix-polygon .activation-section .parent-block:hover i{
+	color: #00B956!important;
+}
+
+/* child matrix */
+#matrix-polygon .activation-section .child-block:hover img{
+	background: #00B956!important;
+}
+#matrix-polygon .activation-section .child-block:hover span{
+	color: #00B956!important;
+}
+#matrix-polygon .activation-section .child-block:hover i{
+	color: #00B956!important;
+}
+/* end hover */
+
+#matrix-polygon .dropbtn:hover, .dropbtn:focus {
+  background-color: #C4C4C4;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 4px 0px 4px 10px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px 10px 0px 0px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  width: 175px; 
+  overflow: hidden;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+#matrix-polygon .dropdown-content a {
+  color: black;
+  padding: 7px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+@media only screen and (max-width: 960px) {
+	.dropbtn{
+		padding: 9px!important;
+		font-size: 12px!important;
+	}
+	.dropbtn i{margin-left: 5px!important;} 		
+	
+	#matrix-polygon .childblocks:before{
+		width: 63.8%;
+	} 
+	#matrix-polygon .child-block::before{
+		
+	}
+	#matrix-polygon .child-block.center-block::before{
+	    width: 46px;
+	    left: -25px;
+	    top: -39px;
+	}
+	#matrix-polygon .name-id span{font-size: 8px!important;}
+	#matrix-polygon .name-id h6{font-size: 10px;}
+	#matrix-polygon .child-block .id-number{font-size: 10px!important;}
+}
+
+@media only screen and (max-width: 720px) {
+	#matrix-polygon .child-block.center-block::before{
+		width: 31px!important;
+	    left: -25px;
+	    top: -31px;
+	}
+	#matrix-polygon .child-block{    
+    	padding: 10px;
+	}
+
+	#matrix-polygon .child-block {
+    	margin: 0px 5px;
+    }	
+}	 
+
+@media only screen and (max-width: 540px) {
+	.dropbtn{
+		padding: 7px!important;
+		font-size: 11px!important;
+	}	
+	.dropbtn i{margin-left: 5px!important;} 
+	#matrix-polygon h6, #matrix-polygon p, .matrix-main span.message, .matrix-main span.sitemap{font-size: 8px!important;}
+	#matrix-polygon .matrix-main img{
+		width: 40px;
+	}
+	.matrix-main span.message{margin-right: 0px!important;}
+	#matrix-polygon .parent-block{padding: 10px!important;}
+	#matrix-polygon .child-block{padding: 8px!important;}
+	#matrix-polygon .child-block .name-id{
+		text-align: center;
+		line-height: 0.7;
+	}			
+	#matrix-polygon .child-block .id-number, .parent-block .id-number{margin-bottom: 0px!important;}			
+	#matrix-polygon .child-block .img-user{
+		margin-left: auto!important;
+		margin-right: auto!important;
+	}
+	#matrix-polygon .child-block .fa-comment-alt{
+		margin: 0!important;
+	}	
+	#matrix-polygon .dropdown-content a{padding: 5px 16px!important;}
+	#myInput{padding: 0!important}
+	.dropdown-content{width: 95px!important}
+	#matrix-polygon .child-block {
+    	margin: 0px 4px;
+    }		
+
+    #matrix-polygon .childblocks:before{
+    	width: 68.4%;
+    	top: 8px;
+    }
+	#matrix-polygon .child-block.center-block::before{
+        width: 27px!important;	 
+	    top: -29px;
+	}    
+	#matrix-polygon .child-block::before{
+		width: 14px;	    
+	    top: -23px;
+	}    	    
+	#matrix-polygon .name-id span{
+    	font-size: 7px!important;
+    }	
+    #matrix-polygon .fa-sitemap{margin-right: 0px!important;}
+    #matrix-polygon .child-block .id-number {font-size: 8px!important;}
+}	
+
+
+/* ========== Ens polygon matrix bk ============= */
+
+
+
+	.activation-page .right-controls {
+		display: block;
+	}
+	.activation-page .right-controls .balance-control {
+		margin-top: 20px;
+		margin-left: 0;
+	}
+	.right-controls > div {
+		text-align: center;
+	}
+	.balance-control {
+	display: block;
+	}
+	.activation-page .balance-control .wallet-icon i{
+		display: none; 
+	}
+	.activation-page .balance-control .clone-count {
+	    padding: 10px 15px;
+	    justify-content: center;
+	    border-top: 1px solid #ddd;
+	}
+	.activation-page .balance-control .fill-balance {
+		border-right:none;
+	}
+	.activation-page .btn-lg {
+		margin-top: 15px;
+		width: 100%;
+	}
+	.mx-video-page .mx-photos-block a {
+		padding-left: 0;
+		margin: 0 auto;
+	}
+	.mx-video-page .mx-photos-block {
+		justify-content: center;
+	}
+	.mx-video-page .mx-photos-dobavit {
+		margin: 0 auto;
+		margin-top: 10px;
+	}
+}
+
+

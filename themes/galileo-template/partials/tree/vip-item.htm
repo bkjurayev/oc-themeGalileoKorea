@@ -1,0 +1,105 @@
+==
+{% set user = item.clone.user %}
+
+
+{% if item %}
+
+	{% if up %}
+		
+		
+		<div class="parent-block offset-lg-21 offset-md-21 offset-sm-18  col-lg-18 col-md-18 col-sm-24 col-30 nav bg-white border-radius align-items-center mx-auto" style="max-width: 300px">
+			<div class="d-flex">
+				<img class="mr-lg-3 mr-dm-3 mr-1" src="{{ user.avatar.getThumb(65, 65, {mode: 'crop'})|default("/themes/galileo/assets/images/no-avatar.jpg") }}" width="65">
+					<div class="mx-avatar">
+						<h6 class="m-0">{{ user.name }}</h6>
+						
+						<p class="id-number small muted-text">ID: {{ item.clone_id }}</p>
+						
+						{% if up and item.parent.clone_id %}
+							<a href="#" 
+								data-request="onLoadUserTree" 
+					            data-request-update="'tree/vip': '#treeContainer'"
+					            data-request-data="'userId': '{{item.parent.clone_id}}', 'blockId': '{{block.id}}'"
+								class="text-decoration-none">
+								<span class="message muted-text ml-3">
+									<i class="fal fa-arrow-up  muted-text mr-1 hover-matrix"></i>Структура
+								</span>
+							</a>
+						{% endif %}
+						
+						
+				</div>
+			</div>
+		</div>
+		
+		
+	{% else %}
+	
+		<div class="child-block col nav bg-white border-radius align-items-center mt-4" style="max-width: 250px">
+			<div class="img-user mr-lg-3 mr-md-3 mr-1">
+				<img src="{{ user.avatar.getThumb(65, 65, {mode: 'crop'})|default("/themes/galileo/assets/images/no-avatar.jpg") }}" 
+					width="65">
+			</div>
+			<div class="mx-name">
+			<div class="name-id">
+				<h6 class="m-0">{{ user.name }}</h6>
+				<p class="id-number small muted-text">ID: {{ item.clone_id }}</p>
+				
+				<a href="{{ 'profile/messages'|page({id: user.id}) }}" 
+					class="text-decoration-none">
+						<span class="message muted-text mr-3 hover-matrix">
+						<i class="fal fa-comment-alt muted-text mr-1 hover-matrix"></i> Написать
+					</span>
+				</a>
+				
+				{% if down %}
+					<a href="#" 
+						data-request="onLoadUserTree" 
+			            data-request-update="'tree/vip': '#treeContainer'"
+			            data-request-data="'userId': '{{item.clone_id}}', 'blockId': '{{block.id}}'"
+						class="text-decoration-none">
+						<span class="sitemap muted-text hover-matrix ml-2">
+							<i class="fal fa-sitemap muted-text mr-1 hover-matrix"></i>Структура
+						</span>
+					</a>
+				{% endif %}
+				
+				
+				
+			</div>
+			</div>
+		</div>
+		
+	{% endif %}
+	
+
+
+{% else %}
+
+	<div class="child-block col bg-white border-radius text-center align-items-center mt-4" style="max-width: 250px">
+		<img style="max-width: 100px" src="http://rosspecavto.ru/wp-content/uploads/2014/01/user-icon-image-placeholder-300-grey.jpg" class="img-fluid" alt="">
+	</div>
+
+{% endif %}
+
+
+<style>
+	@media screen and (max-width:600px) {
+		.mx-avatar {
+			text-align: center;
+		}
+		.mx-name {
+			width: 100%;
+		}
+		.name-id h6 {
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    width: 200px;
+	    margin: 0 auto;
+	    display: block;
+	    text-align: center;
+	    margin: 0 auto !important;
+		}
+	}
+</style>

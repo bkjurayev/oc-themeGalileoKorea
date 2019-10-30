@@ -1,0 +1,99 @@
+title = "Leaders"
+url = "/leaders"
+layout = "main"
+is_hidden = 0
+==
+<?php
+use Rainlab\User\Models\User as UserModel;
+
+function onStart ()
+{
+	$topUsers = UserModel::with(['avatar', 'friends'])->where('leader', true)->remember(5)->get();
+	
+	if (!$topUsers){
+		return;
+	}
+	$this['topUsersCount'] = $topUsers->count();
+	$this['topUsers'] = $topUsers;
+}
+?>
+==
+<link rel="stylesheet" href="{{'assets/css/pages/leaders.css'|theme}}">
+
+<div class="leaders-page">
+	<div class="header d-flex justify-content-center justify-content-md-between flex-wrap align-items-center px-4 py-2">
+		<div class="title mb-2 mb-md-0">
+			<i class="fas fa-crown"></i> Топ лидеры ({{ topUsersCount }})
+		</div>
+		<!-- <div class="search">
+			<input type="text" placeholder="Top leaders" class="form-control">
+			<span><i class="fa fa-search"></i></span>
+		</div> -->
+	</div>
+	
+	<div class="container-fluid">
+		<div class="row leaders-list justify-content-center p-lg-4 py-4">
+			
+			{% for topUser in topUsers %}
+			
+			<div class="col-lg-15 col-sm-30">
+				<div class="item">
+					<div class="cover"></div>
+					
+					<div class="avatar">
+						<img src="{{ topUser.avatar ? topUser.avatar.getThumb(100, 100, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme  }}" alt="">	
+					</div>
+
+					<div class="name-id text-center">
+						<h5> {{ topUser.name }} {{ topUser.surname }} </h5>
+						<p>ID: {{topUser.id}}</p>
+					</div>
+
+					<div class="counters d-flex justify-content-between p-3 text-center">
+						
+						<div>
+							<strong>{{ topUser.friends.count() }}</strong><br>
+							<span class="text-muted">Друзья</span>
+						</div>
+
+						<div>
+							<strong>{{ topUser.images.count() }}</strong><br>
+							<span class="text-muted">Фото</span>
+						</div>
+
+						<div>
+							<strong>{{ topUser.videos.count() }}</strong><br>
+							<span class="text-muted">Видео</span>
+						</div>
+
+					</div>
+
+
+					<div class="actions p-3 d-flex justify-content-between">
+						<a href="#" class="text-muted">
+							<i class="fal fa-user-plus"></i> В друзья
+						</a>
+
+						<a href="#" class="text-muted">
+							<i class="far fa-comment-alt"></i>
+							Сообщение
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			{% else %}
+				<li class="col-lg-15 col-sm-30">
+					<div class="card text-center info flex-fill">
+						<p class="text-muted"> Пока нет лидеров </p>
+					</div>
+				</li>
+			{% endfor %}
+			
+
+		</div>
+	</div>
+</div>
+<style>
+
+</style>

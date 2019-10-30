@@ -1,0 +1,28 @@
+title = "Webinar"
+url = "/webinar"
+layout = "main"
+is_hidden = 0
+
+[meeting]
+==
+<link rel="stylesheet" href="{{'assets/css/pages/webinar.css'|theme}}">
+
+<div class="webinar container-fluid">
+	<div class="p-4 nav align-items-center">
+		<h5 class="flex-grow-1 m-0">Webinar</h5>
+		
+		<!-- Button to Open the Modal -->
+		<a href="#" class="btn btn-success px-3 py-2" data-toggle="modal" data-target="#addVebinarModal"><i class="far fa-plus"> &nbsp;&nbsp;&nbsp;</i>Добавить комнату</a>
+		<!-- The Modal -->
+		<div class="webinar-modal">
+			
+			{% partial 'webinar/modal' %}
+		
+		</div>
+	</div>
+	<div class="row px-3 meetings-box">
+		
+		{% partial 'webinar/meetings' %}
+		
+	</div>
+</div>

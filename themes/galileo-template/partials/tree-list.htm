@@ -1,0 +1,24 @@
+==
+<ul>
+	{% for item in tree %}
+		{% set user = item.clone.user  %}
+	
+		<li>
+			 <span style="font-size: 10px;"> {{item.block.type}} {{item.block_id}} </span> 
+			 
+			 <p class="bg-dark">
+				<strong class="bg-danger text-white p-2"> {{ user.name }} - {{ user.id }} </strong> --
+				<strong class="bg-warning text-white p-2"> {{ item.clone.name }} - {{ item.clone_id }} </strong>
+				
+				 <span class="text-white">TreeID:  {{ item.id }}, BlockID: {{ item.block_id }} </span>
+				<button data-request="onLoadTree" 
+					data-request-update="'tree-list': '#childContainerOf{{item.id}}'"
+					data-request-data="parent_id: {{item.id}}"> + </button>
+			</p>
+			
+			<div id="childContainerOf{{item.id}}">
+				
+			</div>
+		</li>
+	{% endfor %}
+</ul>

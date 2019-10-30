@@ -1,0 +1,118 @@
+==
+<ul class="nav flex-column py-3">
+
+	{% if not user.status %}
+	<li class="nav-item"> 
+		<a href="#" 
+			data-request="onActivateModal"
+			data-request-flash
+			data-request-success="$('#mainModal').modal('show')" class="nav-link"> 
+			<i class="fal fa-bolt"></i>
+			<span>Активация</span>
+		</a> 
+	</li> 
+	{% endif %}
+	
+	<li class="nav-item"> 
+		<a href="{{ 'profile' | page }}" class="nav-link"> 
+			{#<i class="fal fa-user" aria-hidden="true"></i> #}
+			<img src="{{'assets/images/menu-icons/home.png'|theme}}" alt="home" width="16">
+			<span>Моя страница </span>
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" class="nav-link"> 
+			{#<i class="fal fa-newspaper"></i>#}
+			<img src="{{'assets/images/menu-icons/news.png'|theme}}" alt="news" width="15">
+			<span>Новости </span>
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="{{'chat'|page}}" class="nav-link"> 
+			{#<i class="fal fa-comment-dots"></i>#}
+			<img src="{{'assets/images/menu-icons/message.png'|theme}}" alt="message" width="15">
+			<span>Сообщения</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="/leaders" class="nav-link"> 
+			{#<i class="fal fa-flag"></i>#}
+			<img src="{{'assets/images/menu-icons/flag.png'|theme}}" alt="flag" width="15">
+			<span>Топ-Лидеры</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="{{'users'|page}}" class="nav-link"> 
+			{#<i class="fal fa-user-friends"></i>#}
+			<img src="{{'assets/images/menu-icons/friend.png'|theme}}" alt="friend" width="15">
+			<span>Друзья</span> 
+		</a> 
+	</li>
+	
+	<li class="nav-item"> 
+		<a href="#" class="nav-link"> 
+			{#<i class="far fa-film-alt"></i>#}
+			<img src="{{'assets/images/menu-icons/video.png'|theme}}" alt="video" width="15">
+			<span>Видеозаписи</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" class="nav-link"> 
+			{#<i class="fal fa-image"></i>#}
+			<img src="{{'assets/images/menu-icons/photos.png'|theme}}" alt="photos" width="15">
+			<span>Фотогалерея</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" class="nav-link"> 
+			{#<i class="far fa-volume-down"></i>#}
+			<img src="{{'assets/images/menu-icons/music.png'|theme}}" alt="music" width="15">
+			<span>Аудиозаписи</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" class="nav-link"> 
+			{#<i class="fal fa-star"></i>#}
+			<img src="{{'assets/images/menu-icons/star.png'|theme}}" alt="star" width="15">
+			<span>Развлечения</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" class=" {{ user.status ?: 'disabled' }} nav-link"> 
+			{#<i class="fal fa-book"></i>#}
+			<img src="{{'assets/images/menu-icons/reclam.png'|theme}}" alt="reclam" width="15">
+			<span>Реклама</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" class="nav-link"> 
+			<i class="far fa-cog"></i>
+			{#<img src="{{'assets/images/menu-icons/home.png'|theme}}" alt="home" width="15">#}
+			<span class="">Настройки</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" class="nav-link"> 
+			<i class="fal fa-history"></i>
+			<span class="">Support</span> 
+		</a> 
+	</li> 
+	
+	<li class="nav-item"> 
+		<a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="nav-link"> 
+			{#<i class="fa fa-times" aria-hidden="true"></i> #}
+			<img src="{{'assets/images/menu-icons/exit.png'|theme}}" alt="home" width="15">
+		 	<span>Выход</span>
+		</a> 
+	</li> 
+</ul>

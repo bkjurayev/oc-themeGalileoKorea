@@ -1,0 +1,47 @@
+/*==========  Marketing  =============*/
+
+.marketing-page .card {
+	margin-bottom: 30px;
+}
+
+.marketing-page .card .card-header {
+	font-size: 25px;
+}
+
+.marketing-page .card .activation-header {
+	background: transparent linear-gradient(90deg, #005EBC 0%, #128FD6 100%) 0% 0% no-repeat padding-box;
+}
+
+.marketing-page .card .polygon-header {
+	position: relative;
+	text-transform: uppercase;
+	background-image: url(../../images/marketing/pattern.png);
+	background-size: cover;
+	background-position: center; 
+}
+
+.marketing-page .card .polygon-header .line { 
+	position: absolute;
+	bottom: 7px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	background: #E6A31D;
+	max-width: 200px;
+	height: 5px;
+}
+
+.marketing-page .card .vip-header {
+	background-image: url(../../images/marketing/vip-header-n-bg.png);
+	background-repeat: no-repeat;
+	background-size: cover;	
+}
+.marketing-page .card .card-header{
+	min-height: 70px!important;
+}
+
+
+
+
+

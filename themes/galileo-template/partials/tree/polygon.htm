@@ -1,0 +1,27 @@
+==
+{% set item0 = tree %}
+	{% set item1 = tree.children[0] %}
+	{% set item2 = tree.children[1] %}
+	{% set item3 = tree.children[2] %}
+	{% set item4 = tree.children[3] %}
+	{% set item5 = tree.children[4] %}
+
+
+{% partial 'tree/polygon-item' item=item0 up=true %}
+
+
+<div class="col-lg-60 col-lg-60 mt-lg-5 mt-md-4 mt-sm-2 mt-1">
+	<div class="childblocks row px-3">
+		
+		{% partial 'tree/polygon-item' down=true item=item1 %}
+	
+		{% partial 'tree/polygon-item' down=true item=item2 %}
+	
+		{% partial 'tree/polygon-item' down=true item=item3 %}
+	
+		{% partial 'tree/polygon-item' down=true item=item4 %}
+	
+		{% partial 'tree/polygon-item' down=true item=item5 %}
+		
+	</div>
+</div>

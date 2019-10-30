@@ -1,0 +1,46 @@
+/*==========  Video page  =============*/
+
+
+.mx-video-page .mx-video-play {
+	width: 70px;
+	height: 70px;
+	background-color: #fff;
+	border-radius: 50%;
+	position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index:9999;
+}
+
+.mx-video-page .mx-photos-img {
+	position: relative;
+}
+
+.mx-photos-img img {
+	width: 100%;
+	border-radius: 10px!important;
+}
+.mx-video-page .mx-video-play-main {
+	width: 100%;
+	background-color: #00000085;
+    position: absolute;
+    height: 100%;
+    display: none;
+    border-radius: 10px;
+}
+.mx-video-page  .mx-video-play a{
+	font-size: 40px;
+    color: #00b956;
+}
+.mx-video-page  .mx-video-play  a i {
+	padding-top: 15px;
+    margin-right: -10px;
+}
+.mx-video-page  .mx-photos-img:hover .mx-video-play-main {
+	display: block;
+	transition: 0.9s !important;
+}

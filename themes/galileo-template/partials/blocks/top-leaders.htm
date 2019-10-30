@@ -1,0 +1,69 @@
+==
+<?php
+use Rainlab\User\Models\User as UserModel;
+
+function onStart ()
+{
+	$topUsers = UserModel::with(['avatar', 'friends'])->where('leader', true)->limit(7)->remember(5)->get();
+	
+	if (!$topUsers){
+		return;
+	}
+	
+	$this['topUsers'] = $topUsers;
+}
+?>
+==
+<div class="card top-leaders">
+	<div class="card-header bg-vip text-center">
+		<p class="m-0 text-white"><strong style="font-family: 'SF-Pro-Bold'">Топ-Лидеры</strong></p>
+  	</div>
+
+	<div class="card-body px-3 py-1">
+		<ul class="">
+			
+			{% for topUser in topUsers %}
+				
+				<li class="d-flex py-2 justify-content-between">
+					<div class="avatar {{ topUser.isOnline() ? 'online' }}">
+						<a href="/profile"> 
+							<img class="img-fluid" src="{{ topUser.avatar ? topUser.avatar.getThumb(50, 50, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme  }}" alt=""> 
+						</a>
+					</div>
+					
+					<div class="info pb-2 d-flex align-items-center flex-grow-1 justify-content-between">
+						<h6> <a href="#" class="text-dark">{{ (topUser.name ~ ' ' ~ topUser.surname)  | slice(0, 14) }}{{ (topUser.name ~ ' ' ~ topUser.surname) | length > 14 ? '...' : '' }}</a> </h6>
+						
+						<div class="text-right">
+							<img class="img-fluid" src="{{ user.getLevel('vip') }}" style="max-width: 30px; margin-top: -10px" alt="">
+						</div>
+					</div>
+				</li>
+				
+				
+			{% else %}
+			
+				<li class="d-flex py-2">
+					<div class="info flex-fill">
+						<p class="text-muted"> Пока нет лидеров </p>
+					</div>
+				</li>
+			
+			{% endfor %}
+			
+		</ul>
+	</div>
+	
+	<div class="card-footer bg-vip text-center">
+		<a href="{{ 'leaders' | page }}" class="small text-white"> Посмотреть всех </a>
+	</div>
+</div>
+
+
+<style>
+.top-leaders ul li a {
+	font-size: 14px;
+	font-family: 'SF-Pro-Bold'
+}
+
+</style>

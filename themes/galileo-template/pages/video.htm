@@ -1,0 +1,68 @@
+title = "Video"
+url = "/video"
+layout = "main"
+is_hidden = 0
+==
+<link rel="stylesheet" href="{{'assets/css/pages/video.css'|theme}}">
+
+<div class="container-fluid mx-video-page p-4">
+	<div class="header d-flex justify-content-between">
+		<div class="controls d-flex align-items-center links">
+			<h4 class="mb-0 mr-4">Все видоазаписи</h4>
+			<a href="#" class="text-success">Мои видеозаписи</a>
+		</div>
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> + Добавить
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-row mb-2">
+							<input type="text" class="form-control" placeholder="Заголовок">
+						</div>
+						<div class="form-row mb-2">
+								<div class="custom-file">
+								<input type="file" class="custom-file-input" id="inputGroupFile01">
+								<label class="custom-file-label" for="inputGroupFile01">Выдерите файл</label>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Добавить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-4">
+		<div class="col-xl-15 col-lg-20 col-md-30 col-60">
+			<div class="mx-photos-img">
+				<div class="mx-video-play-main">
+					<div class="mx-video-play">
+						<a href="#"><i class="fas fa-play"></i></a>
+					</div>
+				</div>
+				<img src="{{'assets/images/bg_login.png'|theme}}" alt="">
+			</div>
+			<div class="info small">
+				<h6 class="mt-2 mb-0">Вопросы реагированой без...</h6>
+				<p class="mx-name">Иванова Алеканда</p>
+				<div class="controls d-flex justify-content-between">
+					<a href="#" class="text-muted"><i class="far fa-heart"></i> <span class="ml-1">5000</span></a>	
+					<a href="#" class="text-muted"><i class="far fa-comment-dots"></i> <span class="ml-1">350</span></a>
+					<a href="#" class="text-muted"><i class="fas fa-eye"></i> <span class="ml-1">175</span></a>
+					<span class="text-muted">1 час назад</span>
+				</div>							
+			</div>
+		</div>
+	</div>
+</div>

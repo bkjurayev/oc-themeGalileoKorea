@@ -1,0 +1,32 @@
+/* =========== Friends page ============ */
+.friends-block{background: #F2F4F5;}
+.friends-block .bg-white img{border-radius: 50%;}
+.friends-block span.h4 a:hover{color: #28a745!important;} 
+.friends-block i.muted-text:hover{color: black}
+.friends-block a{color: black;text-decoration: none;}
+
+@media only screen and (max-width: 960px) {
+	.friends-block span.h4{font-size: 20px;}		
+}
+
+@media only screen and (max-width: 540px) {
+	.friends-block span.h4{font-size: 16px;}		
+	.friends-block span.h4{display: block;margin: 5px 0px!important}
+	.friends-block span.mr-4 img{width: 40px;}
+	.friends-block span.mr-4{margin-right: .5rem!important}
+	.friends-block span.flex-grow-1 h6, span.flex-grow-1 p{font-size: 12px;}
+	.friends-block span.flex-grow-1{max-width: 125px;}
+	.friends-block span.flex-grow-1 p{margin: 0px;}
+	.friends-block .align-items-center p.muted-text, .align-items-center i{font-size: 8px;}
+	.friends-block .col-lg-15 .right-img{padding-left: 10px;}
+}	
+
+
+
+
+
+
+
+
+
+

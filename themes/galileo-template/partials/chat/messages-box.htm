@@ -1,0 +1,14 @@
+==
+{% for message in conversation.messages %}
+
+	{% partial 'chat/message-item' message=message %}
+	
+{% endfor %}
+
+<script>
+	var messageBox = document.getElementById('messages-box');
+	
+	if (messageBox && messageBox.nodeType ) {
+		messageBox.scrollTop = messageBox.scrollHeight;
+	}
+</script>

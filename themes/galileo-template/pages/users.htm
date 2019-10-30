@@ -1,0 +1,99 @@
+title = "Пользователи"
+url = "/users/:type?all"
+layout = "main"
+is_hidden = 0
+==
+<?php
+use Rainlab\User\Models\User as UserModel;
+
+function onStart()
+{
+	$this->userSearch();	
+}
+
+function onSearch()
+{
+	$this->userSearch();
+}
+
+
+
+public function userSearch() {
+	$type = $this->param('type');
+	$page = input('page', 1);
+	$search = input('search');
+	$query = UserModel::with(['avatar', 'friends'])->orderBy(Db::raw('rand()'));
+	$user = Auth::getUser();
+	
+	if (strlen($search) > 2) {
+		$query = $query->where(function($query) use ($search) {
+	        $query->where('id', $search)
+	        	->orWhere('name', 'like', "%{$search}%")
+	            ->orWhere('surname', 'like', "%{$search}%");
+	    });
+	}
+	
+	if ($type == 'friends') {
+		$friends = $user->friends()->lists('friend_id');
+		$users = $query->whereIn('id', $friends)->paginate(40, $page);
+	}else if ($type == 'leaders') {
+		$users = $query->where('leader', true)->paginate(40, $page);
+	} else  {
+		$users = $query->paginate(40, $page);
+	}
+	
+	
+	if (!$users) {
+		return;
+	}
+	
+	$this['type'] = $type;
+	$this['users'] = $users;
+	$this['search'] = $search;
+	
+	$user = Auth::getUser();
+	
+	$this['user'] = $user ? $user : null;
+}
+?>
+==
+<!-- Friends -->
+<div class="friends-block row m-0 pb-5">
+	<div class="col-lg-60 py-4 px-4">
+		<span class="h4 mr-2"><a class="{{ type == 'friends' ? 'text-success' : 'text-dark' }}" href="{{ 'users' | page({type: 'friends'}) }}"><b>Друзья</b></a></span>
+		<span class="h4 mx-2"><a class="{{ type == 'all' ? 'text-success' : 'text-dark' }}" href="{{ 'users' | page({type: 'all'}) }}"><b>Все пользователи</b></a></span>
+		<span class="h4 ml-2"><a class="{{ type == 'leaders' ? 'text-success' : 'text-dark' }}" href="{{ 'users' | page({type: 'leaders'}) }}"><b>Заявки друзья</b></a></span>
+	</div>
+	<div class="col-lg-45 pr-0">
+		<div class="container-fluid p-0">
+			<div class="row">
+				<div class="col-lg-42 col-md-44 col-sm-60 col-60 mb-3 pr-md-0">
+					<div class="bg-white pb-0 pt-1 px-1 border-radius border" id="user-list">
+						
+						{% partial 'users/user-list' %}
+						
+					</div>
+				</div>
+				<div class="col-lg-18"></div>
+			</div>	
+		</div>	
+	</div>	
+	<div class="col-lg-15 col-md-16 col-sm-60 col-60">
+		<div class="right-img">
+			{#<img src="{{ 'assets/images/right-img.png' | theme }}" class="w-100 border-radius">#}
+		</div>
+	</div>
+</div>
+<!-- End friends -->
+
+<style>
+	.friends-block span.h4{
+		font-size: 16px;
+	}
+	.friends-block .muted-text .fa-comment-alt{
+	    font-size: 13px;
+	}    
+	.friends-block .username{
+		font-family: SF-Pro-Bold;
+	}	
+</style>

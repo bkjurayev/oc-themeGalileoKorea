@@ -1,0 +1,49 @@
+==
+<div class="col-lg-15 mb-3">
+	<div class="bg-white border-radius shadow">
+		<div class="border-bottom p-3">
+			<div class="nav muted-text w-100 align-items-center">											
+				<h5 class="flex-grow-1 m-0">{{ meeting.name }}</h5>
+				<a href="javascript:;" 
+					data-request="meeting::onRemoveRoom" 
+					data-request-update="'webinar/meetings': '.meetings-box'" 
+					data-request-data="id: {{meeting.id}}"
+					class="text-muted">
+					<i class="far fa-trash"></i>
+				</a>
+			</div>				
+			<form class="form-row" data-request="meeting::onJoinAdmin" data-request-flash>
+				<input type="hidden" name="id" value="{{ meeting.id }}">
+				<div class="my-2">
+					<span class="small muted-text mr-4">0 сессий</span>
+					<span class="before small muted-text"></span>
+					<span class="small muted-text">{{ meeting.record | default(0) }} записей</span>
+				</div>
+				<button class="btn btn-success py-1 w-100">Начать</button>
+			</form>
+		</div>	
+		<div class="p-3">
+			<h6>Пригласить друзей</h6>
+			<button class="text-success border-0 bg-transparent p-0" onclick="copiedToClipboard({{ meeting.id }})" id="BtnCopyToClipboard-{{meeting.id}}">Скопировать ссылку</button>
+			<input type="text" class="disabled border-0 bg-transparent form-control form-control-sm small p-0 py-2" value="https://galileo-intelligence.co..." id="myMeetingUrl-{{meeting.id}}">
+		</div>
+	</div>
+</div>
+<script>
+	function copiedToClipboard(id) {
+	  /* Get the text field */
+	  var copyText = document.getElementById("myMeetingUrl-" + id);
+	
+	  /* Select the text field */
+	  copyText.select();
+	  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+	
+	  /* Copy the text inside the text field */
+	  document.execCommand("copy");
+	
+	  /* Alert the copied text */
+	  var Btn = document.getElementById("BtnCopyToClipboard-" + id);
+	  
+	  Btn.innerHTML = "Скопировано";
+	}
+</script>

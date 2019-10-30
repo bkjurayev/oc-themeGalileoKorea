@@ -1,0 +1,77 @@
+==
+<form 
+	data-request="onWithdraw" 
+	data-request-update="'ofice/withdraw-form': '#withdrawtab'"
+	data-request-flash
+	style="max-width: 600px"
+	class="bg-white border-radius m-auto shadow p-4">
+
+	<input type="hidden" name="payment_system" value="payeer">
+
+	<div id="onusercheck-result"></div>
+	
+	<div class="text-center m-4 pb-2">
+		<img src="https://alllogos.ru/images/logotip-payeer.png" class="img-fluid" style="width:100px;" alt="">
+	</div>
+
+	
+	<div class="mx-main-vivod d-block d-md-flex
+	justify-content-between  align-items-center">
+		<div class="mx-left-vivod">
+			<p class="d-flex"> <img src="https://icon-library.net/images/icon-wallet/icon-wallet-8.jpg" class="mx-purse" style="max-height: 50px;" alt="">  <strong>{{user.balance|default(0)}}</strong><img class="mx-g" src="/themes/galileo-template/assets/images/G.png" alt=""></p>
+		</div>
+		<div class="mx-right-vivod">
+			<div class="form-group">
+				<input class="form-control" required name="comment" id="commentInput" placeholder="№">
+			</div>
+			
+			<div class="form-group">
+				<input class="form-control" required name="amount" id="amountInput" placeholder="Сумма">
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="text-center text-md-right mt-4">
+		
+		<button  data-attach-loading 
+				data-request="onWithdrawHistory"
+				data-request-update="'ofice/withdraw-table': '#withdraw-table'" 
+				class="btn btn-link mx-histori"> <i class="la la-plus"></i>История </button>
+				
+		<button  class="btn btn-success mx-histori">Вывод</button>
+		
+	</div>
+	
+	<style>
+	.mx-g {
+		width: 35px;
+	    height: 35px;
+	    align-items: center;
+	    margin-top: 22px;
+	    margin-left: 0px;
+	}
+		.mx-histori {
+			font-size: 13px;
+		}
+		.mx-right-vivod {
+			width: 59%;
+		}
+	.mx-left-vivod strong {
+		color: #00b956;
+	    padding-top: 22px;
+	    display: block;
+	    padding-left: 8px;
+	    font-size: 20px;
+	    font-weight: 600;
+	}
+	.form-control::placeholder{
+		color: #c3c3c3;
+	}
+	@media screen and (max-width: 800px)	{
+		.mx-right-vivod {
+			width: 100%;
+		}
+	}
+	</style>
+</form>

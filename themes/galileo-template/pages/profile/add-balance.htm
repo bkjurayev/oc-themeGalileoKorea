@@ -1,0 +1,103 @@
+title = "Replenishment"
+url = "/profile/add-balance"
+layout = "main"
+is_hidden = 0
+
+[payFormComponent]
+paramAmount = "amount"
+paramOrder = "order_id"
+paramCurrency = "currency"
+==
+<div class="container-fluid p-4 h-100 d-flex align-items-center">
+	
+	
+	<div id="payFormContainer" class="m-auto">
+		<form 
+			data-request="payFormComponent::onPayForm"
+		    data-request-update="'payFormComponent::default': '#payFormContainer'"
+		    data-request-flash
+			class="bg-white nav border-radius shadow p-4">
+			
+			<input type="hidden" name="order_id" value="{{user.id}}">
+    		<input type="hidden" name="currency" value="USD">
+    		<input type="hidden" name="payment_system" value="payeer">
+			
+			<div class="text-center w-100 mb-4">
+				<img style="max-width: 250px;" src="https://onebillsoftware.com/wp-content/uploads/2018/06/onebill-payment-banner.png" alt=""> 
+			</div>
+			<hr>
+			
+			<div class="left-block muted-text d-flex justify-content-start align-items-center">
+				<h4 class="d-flex"> <img src="https://icon-library.net/images/icon-wallet/icon-wallet-8.jpg" class="mx-purse" style="max-height: 50px;" alt=""> <sapn class="mx-number">{{user.balance|default(0)}}</sapn>	<img class="mx-g" src="/themes/galileo-template/assets/images/G.png" alt=""> </h4>
+			</div>
+			
+			<div class="right-block">
+			
+				<div class="form-group">
+					<div class="input-group mb-3">
+						<img src="https://alllogos.ru/images/logotip-payeer.png" class="img-fluid" style="max-height: 15px;" alt="">
+					</div>																		
+				</div>
+				
+				<div class="form-group">								
+					<input type="text" name="amount" class="form-control is-valid" placeholder="Сумма" required>
+				</div>
+				
+				<button type="submit" data-attach-loading 
+					class="btn btn-success mx-btn mx-btn-histori">Пополнить</button>
+			</div>							
+		</form>
+	</div>
+	
+	
+</div>
+
+<style>
+	.mx-purse {
+		margin-bottom:35px;
+	}
+	.mx-number {
+		margin-top: 22px;
+	    display: block;
+	    padding-left: 2px;
+	    font-size: 20px;
+		font-weight: 600;
+		color: #00b956;
+	}
+	#payFormContainer {
+		width: 50%;
+	}
+	.left-block {
+		width: 50%;
+	}
+	.mx-btn {
+		float: right;
+	}
+	.mx-btn-histori {
+		font-size: 12px;
+	}
+	.mx-g {
+		width: 35px;
+	    height: 35px;
+	    align-items: center;
+	    margin-top: 20px;
+	    margin-left: 0px;
+	}
+	@media screen and (max-width: 1000px) {
+		.left-block {
+			width: 100%;
+		}
+			#payFormContainer {
+			width: 100%;
+		}
+		.right-block {
+			width: 100%;
+		}
+		.mx-btn {
+			float: initial;
+			margin: 0 auto;
+			display: block;
+		}
+	
+	}
+</style>

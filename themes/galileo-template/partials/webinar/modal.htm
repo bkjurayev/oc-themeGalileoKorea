@@ -1,0 +1,68 @@
+==
+<?php
+function onStart() {
+	$this['attendeepw'] = rand(10000, 99999);
+	$this['moderatorpw'] = rand(10000, 99999);
+	$this['user'] = Auth::getUser();
+}
+?>
+==
+<div class="modal fade" id="addVebinarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="nav p-3">
+				<h6 class="modal-title flex-grow-1 pl-3">Создать комнату</h6>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<form data-request="meeting::onCreate" 
+	    		  data-request-flash
+	    		  data-request-before-update="$('#addVebinarModal').modal('hide'); $('.modal-backdrop').remove()"
+	    		  data-request-update="'webinar/meetings': '.meetings-box', 'webinar/modal': '.webinar-modal'">
+				<!-- Modal body -->
+				<div class="modal-body py-0">
+					<div class="form-row mx-2">
+						<div class="col-lg-30">
+							<input type="text" name="name" class="form-control border-radius my-3" placeholder="Название комнаты">
+							<input type="text" name="attendeepw" class="form-control border-radius my-3" value="{{attendeepw}}" placeholder="Пароль пользователя">
+						</div>
+						<div class="col-lg-30">
+							<input type="text" name="maxParticipants" class="form-control border-radius my-3" placeholder="Кол-во участникxов">
+							<input type="text" name="moderatorpw" class="form-control border-radius my-3" value="{{moderatorpw}}" placeholder="Пароль модератора">
+						</div>	
+						<div class="col-lg-60">
+							<textarea class="form-control" name="welcomeMessage" placeholder="Приветствие (для чата)"></textarea>
+						</div>	
+						<div class="col-lg-60">
+							<div class="custom-control custom-switch border-top mt-4 pt-3">
+								<input name="muteOnStart" type="checkbox" class="custom-control-input" id="customSwitch1">
+								<label class="custom-control-label" for="customSwitch1">Отключать звук у пользователей при входе</label>
+							</div>
+							<div class="custom-control custom-switch">
+								<input name="isRecordingTrue" type="checkbox" class="custom-control-input" id="customSwitch2">
+								<label class="custom-control-label" for="customSwitch2">Начать запись автоматом</label>
+							</div>
+							<div class="custom-control custom-switch">
+								<input name="moderatorOnlyMessage" type="checkbox" class="custom-control-input" id="customSwitch3">
+								<label class="custom-control-label" for="customSwitch3">Только модераторы могут писать в чат</label>
+							</div>
+							<div class="custom-control custom-switch border-bottom mb-4 pb-3">
+								<input name="webcamsOnlyForModerator" type="checkbox" class="custom-control-input" id="customSwitch4">
+								<label class="custom-control-label" for="customSwitch4">Только модераторы могут включить камеру.</label>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Отменить</button>
+					<button type="submit" class="btn btn-success">Добавить</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+title = "test"
+url = "/test"
+is_hidden = 0
+
+[session]
+security = "all"
+==
+<?php
+public function onStart() {
+	$user = Auth::getUser();
+	
+	dump($user->getLevel('polygon'));
+	exit;
+	
+}
+?>
+==

@@ -1,0 +1,87 @@
+/*==========  Chat  =============*/
+
+.conversations-list {
+	width: 27%;
+	max-width: 350px;
+}
+
+.chat-header {
+	position: relative;
+    height: calc(1.5em + .75rem + 2px);
+}
+
+.input-search, .message-paste-smile, .message-attach-image {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.search-input {
+    border-bottom: 1px solid #dee2e6!important;
+}
+
+.part-mess-content {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.list-group-link:hover {
+	text-decoration: none;
+}
+#conversations-list {
+	max-height: calc(100vh - 6.55rem);
+}
+
+#conversations-list .list-group-item:first-child {
+	border-top: 0!important;
+}
+
+.messages-box {
+	max-height: calc(100vh - 11rem);
+}
+
+.message-item {
+	max-width: 55%;
+}
+
+.message-item-text {
+	position: relative;
+}
+
+.message-item-text:before {
+	content: '';
+    position: absolute;
+    border-radius: .25rem;
+    background-color: #f8f9fa;
+    height: 0.8rem;
+    width: 1rem;
+    transform: skewY(20deg);
+    top: -.1rem;
+    left: 0px;
+}
+
+.my .message-item .message-item-text:before{
+    background-color: #00b956;
+    transform: skewY(-20deg);
+    top: -0.1rem;
+    left: calc(100% - 1rem);
+}
+
+.message-paste-smile {
+	right: 2.2rem;
+}
+
+.message-attach-image {
+	right: .5rem;
+}
+
+
+
+
+
+
+
+
+

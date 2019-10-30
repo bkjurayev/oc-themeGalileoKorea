@@ -1,0 +1,52 @@
+==
+{% set author = post.author %}
+<div class="post card border-radius mb-3">
+	<div class="card-header d-flex bg-transparent">
+		<div class="avatar">
+			<a href="#">
+				<img class="img-fluid" src="{{ author.avatar ? author.avatar.getThumb(50, 50, {mode: 'crop'}) : 'assets/images/boss-baby.jpg'|theme }}" alt="{{ author.name ~ ' ' ~ author.surname }}">
+			</a>
+		</div>
+		<div class="info flex-grow-1">
+			<h6><a href="#" class="text-dark"> {{ author.name ~ ' ' ~ author.surname }} <img class="img-fluid" src="{{ author.getLevel('vip') }}" style="max-width: 30px; margin-top: -10px" alt=""> </a></h6>
+			<small style="color: #a7aaad!important;">{{ post.created_at | date('d.m.y') }}</small>
+		</div>
+		{% if user.id == author.id %}
+			<div class="icon d-flex">
+				<span class="ml-2">
+					<a  href="javascript:;" 
+						data-request="Posts::onDeletePost"
+						data-request-data="id: {{ post.id }}"
+						data-request-flash
+						data-request-update="'posts/posts-list': '.wall-posts'"
+						data-request-confirm="Вы действительно хотите удалить пост?"
+						title="Удалить" style="color: #a7aaad!important;">
+						<i class="far fa-times"></i>
+					</a>
+				</span>
+				{#<i class="far fa-ellipsis-v muted-text"></i>#}
+			</div>
+		{% endif %}
+	</div>
+	{% if post.title %}
+		<div class="card-body">
+			<h6 class="h6 mb-0"> {{post.title}} </h6>
+		</div>
+	{% endif %}
+	{% for image in post.images %}
+		<div class="card-img text-center">
+			<img src="{{ image.path }}" alt="{{ post.title }}">
+		</div>
+	{% endfor %}
+	
+	{% if post.content %}
+		
+		<div class="card-body">
+			<p class="card-text"> {{ post.content }} </p>										
+		</div>
+		
+	{% endif %}
+
+	{% partial 'posts/post-footer' post = post %}
+
+</div>

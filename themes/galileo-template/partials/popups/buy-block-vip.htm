@@ -1,0 +1,35 @@
+==
+<form data-request-confirm="Вы уверены в точности ID?" 
+	  data-request="onBuyBlock" 
+	  data-request-success="location.reload();" 
+	  data-request-flash>
+	
+	<div class="modal-header">
+		<h4 class="title-modal">Купить блок</h4>
+	</div>
+	
+	<div id="onclonecheck-result"></div>
+	
+	<div class="modal-body">
+		<div class="form-group">
+			<label>Block</label>
+			<select class="form-control" name="block_id">
+				<option value="18">Block 1</option>
+				<option value="19">Block 2</option>
+				<option value="20">Block 3</option>
+			</select>
+		</div>
+		
+		<label for="email">ID партнера</label>
+		
+		<div class="input-group">
+			<input class="mb-3 form-control" type="number" data-request="onCloneCheck" data-request-flash data-track-input="500" name="clone_id" placeholder="Введите ID партнера">
+		</div>
+		
+		<button type="submit" data-attach-loading class="modal-btn mt-3" href="{{'main_block'|page}}">КУПИТЬ</button>
+	</div>
+    
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</form>

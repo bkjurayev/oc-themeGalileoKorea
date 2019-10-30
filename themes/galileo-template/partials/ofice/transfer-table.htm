@@ -1,0 +1,39 @@
+==
+<table class="table">
+	<thead class="text-center">
+		<tr class="">
+			<td> От кого </td>
+			<td> Кому </td>
+			<td> Сумма </td>
+			<td> Время</td>
+		</tr>
+	</thead>
+	
+	<tbody class="text-center">
+		{% for item in user.transfers|reverse  %}
+			<tr>
+				<td> <a class="mx-id" href="#"> {{ item.fromUser.name }} </a> </td>
+				<td> <a class="mx-id" href="#"> {{ item.toUser.name }} </a> </td>
+				<td> {{ item.amount }}</td>
+				<td> {{ item.created_at.format('d.m.Y H:i') }} </td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<style>
+	.table  {
+		font-size: 12px;
+	}
+	.table thead tr td{
+		color:#bdbcbc;
+	}
+	.mx-id {
+		color: #28a745;
+	}
+	#transfer-table {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+</style>

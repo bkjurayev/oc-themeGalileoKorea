@@ -1,0 +1,38 @@
+title = "Sign In"
+url = "/auth/signin"
+layout = "auth"
+is_hidden = 0
+
+[keylogin]
+==
+{% put styles %}
+	<style>
+		#login .logo {
+			width: 10rem;
+		}
+	</style>
+{% endput %}
+<section id="login">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-15 offset-lg-15 offset-md-10 offset-sm-5 offset-5 col-md-20 col-sm-25 col-25 p-4 bg-success">
+				<img src="{{ 'assets/images/logo-1000x206.png' | theme }}" class="mb-lg-5 mb-4 mt-3 logo">
+				<p class="text-white small">Глобальная платформа, социальная сеть для заработка, в которой предприятия и независимые специалисты могут налаживать связи и сотрудничать друг с другом удаленно.</p>
+			</div>
+			<div class="col-lg-15 col-md-20 col-sm-25 col-25 p-4 bg-white">
+				<h5 class="mb-lg-4 mb-3 mt-3">Войти</h5>	
+				<form data-request="onLogin" data-request-flash>
+					<div class="form-group">
+						<input type="text" name="username" class="form-control border-10 mb-3" placeholder="Ключ">
+					</div>						
+					<div class="form-group form-check mb-0">
+						<input type="checkbox" class="form-check-input mr-1" id="exampleCheck1">
+						<label class="form-check-label text-muted small ml-1" for="exampleCheck1">Оставаться в системе</label>
+					</div>
+					<button type="submit" class="btn btn-success d-block text-white my-4 px-4 py-2 mx-auto">Войти</button>
+					<p class="text-muted text-center">Нет аккаунта? <a href="{{ 'auth/signup' | page }}">Зарегистрироваться</a></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

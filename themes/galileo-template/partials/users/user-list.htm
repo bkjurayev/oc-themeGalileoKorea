@@ -1,0 +1,27 @@
+==
+{% for user in users %}
+	<div class="nav p-2 border-bottom">
+		<span class="mr-4">
+			<a href="{{ 'account' | page({id: user.id}) }}">
+				<img class="rounded-circle" src="{{ user.avatar ? user.avatar.getThumb(90, 90, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme }}" width="58" 
+					 alt="{{ user.name ~ ' ' ~ user.surname }}">
+			</a>
+		</span>
+		<span class="flex-grow-1">
+			<p class="m-0 mt-2 small">
+				<a class="username text-success" href="{{ 'account' | page({id: user.id}) }}">{{ user.name ~ ' ' ~ user.surname }}</a>
+				<img class="img-fluid" src="{{ user.getLevel('vip') }}" style="max-width: 30px; margin-top: -10px" alt="">
+			</p>
+			<p class="muted-text small">Москва</p>
+		</span>
+		<span class="d-flex align-items-center">
+			<p class="muted-text nav align-items-center"><i class="fal fa-comment-alt muted-text mr-2"></i> <a href="#" class="d-flex align-items-center text-success"><span class="muted-text small"> Написать </span> {#<i class="far fa-ellipsis-v ml-4 muted-text"></i>#}</a></p>
+		</span>
+	</div>
+{% else %}
+	<div class="nav p-2 border-bottom">
+		<div class="alert text-center">
+			Пользователи не найден!
+		</div>
+	</div>
+{% endfor %}

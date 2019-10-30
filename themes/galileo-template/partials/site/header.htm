@@ -1,0 +1,148 @@
+==
+<!-- top header overlay -->
+<div id="overlay-menu">
+    <div class="overlay-menu-wrap">
+		<div class="overlay-menu-header d-flex justify-content-between py-3">
+			<div>
+				<a href="#" class="text-white btn btn-link btn-sm"> <i class="fa fa-chevron-left" aria-hidden="true"></i> кабинет </a>
+			</div>
+
+			<div>
+				<a href="{{ 'profile' | page }}">
+					<img style="max-width: 100px" src="{{ 'assets/images/logo-1000x206.png' | theme }}" alt="">
+				</a>
+			</div>
+
+			<div>
+				<a href="#" class="text-white btn-sm" id="menu-toggle2"> закрыть <i class="fa fa-times" aria-hidden="true"></i> </a>
+			</div>
+		</div>        
+
+        <ul>
+        	{% if user.status %}
+        	
+	            <li> <a href="/profile/add-balance" class="nav-link"> Пополнение </a> </li>
+				<li> <a href="/profile/transfers" class="nav-link"> Перевод </a> </li>
+				<li> <a href="/profile/withdraw" class="nav-link"> Вывод </a> </li>
+				<li> <a href="/marketing" class="nav-link"> Маркетинг </a> </li>
+				<li> <a href="/profile/webinar" class="nav-link"> Webinar </a> </li>
+				<li> <a href="#" class="disabled nav-link"> Биржа </a> </li>
+				<li> <a href="#" class="disabled nav-link"> SMM программы </a> </li>
+			
+			{% else %}
+			
+	            <li> <a href="#" 
+	            	data-request="onActivateModal"
+					data-request-flash
+					data-request-success="$('#mainModal').modal('show')"
+	            	class="nav-link"> Активировать </a> </li>
+	            
+	            
+	            <li> <a href="#" class="disabled nav-link"> Пополнение </a> </li>
+				<li> <a href="#" class="disabled nav-link"> Перевод </a> </li>
+				<li> <a href="#" class="disabled nav-link"> Вывод </a> </li>
+				<li> <a href="#" class="disabled nav-link"> Маркетинг </a> </li>
+				<li> <a href="#" class="disabled nav-link"> Webinar </a> </li>
+				<li> <a href="#" class="disabled nav-link"> Биржа </a> </li>
+				<li> <a href="#" class="disabled nav-link"> SMM программы </a> </li>
+			
+			{% endif %}
+        </ul>
+    </div>
+</div>
+
+
+
+<!-- top header -->
+<header class="sh-top-menu py-1 shadow">
+	<div class="container-fluid">
+		
+		<div class="row">
+			<div class="col d-flex justify-content-start align-items-center">
+				<div class="header-logo w-100 text-center pr-3">
+					<a href="{{ 'profile' | page }}">
+						<img src="{{ 'assets/images/logo-1000x206.png' | theme }}" alt="">
+					</a>
+				</div>
+			</div>
+
+			<div class="col-auto d-none d-md-block">
+				{% if user.status %}
+					<ul class="nav justify-content-center">
+						<li class="nav-item">
+							<a href="/profile/add-balance" class="nav-link {{ this.page.fileName == 'profile/add-balance.htm' ? 'active' }}"> Пополнение </a>
+						</li>
+						<li class="nav-item">
+							<a href="/profile/transfers" class="nav-link {{ this.page.fileName == 'profile/transfers.htm' ? 'active' }}"> Перевод </a>
+						</li>
+						<li class="nav-item">
+							<a href="/profile/withdraw" class="nav-link {{ this.page.fileName == 'profile/withdraw.htm' ? 'active' }}"> Вывод </a>
+						</li>
+						<li class="nav-item">
+							<a href="/marketing" class="nav-link {{ this.page.fileName == 'marketing/index.htm' ? 'active'  }}"> Маркетинг </a>
+						</li>
+						<li class="nav-item">
+							<a href="#/profile/webinar" class="nav-link {{ this.page.fileName  }}"> Webinar </a>
+						</li>
+						<li class="nav-item">
+							<a href="#/profile/trading" class="disabled nav-link"> Биржа </a>
+						</li>
+						<li class="nav-item">
+							<a href="#/profile/smm" class="disabled nav-link">  SMM программы </a>
+						</li>
+						<li class="nav-item">
+							<a href="#/profile/kopilka" class="disabled nav-link">  Копилка </a>
+						</li>
+					</ul>
+				{% else %}
+					<ul class="nav justify-content-center">
+						<li class="nav-item"> <a href="/profile/add-balance" class="nav-link disabled"> Пополнение </a> </li>
+						<li class="nav-item"> <a href="/profile/transfers" class="nav-link disabled"> Перевод </a> </li>
+						<li class="nav-item"> <a href="/profile/withdraw" class="disabled nav-link"> Вывод </a> </li>
+						<li class="nav-item"> <a href="/marketing" class="disabled nav-link"> Маркетинг </a> </li>
+						
+						<li class="nav-item"> <a href="#"
+							data-request="onActivateModal"
+							data-request-flash
+							data-request-success="$('#mainModal').modal('show')"
+							class="nav-link"> 
+								<i class="fa fa-lock" aria-hidden="true"></i> </a> 
+						</li>
+						
+						<li class="nav-item"> <a href="#/profile/webinar" class="disabled nav-link"> Webinar </a> </li>
+						<li class="nav-item"> <a href="#/profile/trading" class="disabled nav-link"> Биржа </a> </li>
+						<li class="nav-item"> <a href="#/profile/smm" class="disabled nav-link">  SMM программы </a> </li>
+						<li class="nav-item"> <a href="#/profile/kopilka" class="disabled nav-link">  Копилка </a> </li>
+					</ul>
+				{% endif %}
+				
+				
+			</div>
+
+			<div class="d-md-none">
+				<button id="menu-toggle" class="btn">
+					<i class="fa fa-bars text-white" aria-hidden="true"></i>
+				</button>
+			</div>
+
+			<div class="col d-flex justify-content-end">
+				<div class="header-user-block d-flex align-items-center">
+				
+					<a href="/">
+						<img src="{{ user.avatar ? user.avatar.getThumb(50, 50, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme  }}" alt="" class="rounded-circle">
+					</a>
+					
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</header>
+<!-- end top header -->
+
+<style>
+	.nav .nav-item .nav-link {
+		font-size: 13.5px;
+	}
+</style>

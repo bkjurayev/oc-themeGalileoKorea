@@ -1,0 +1,39 @@
+==
+{% set lastMessage = conversation.lastMessage %}
+{% set notReadMessagesCount = conversation.notReadMessages.count %}
+{% set anotherUser = conversation.anotherUser.user %}
+
+{% if anotherUser %}
+<li style="cursor: pointer" 
+	data-request="chatlist::onSelectConversation" 
+	data-request-data="id: {{ conversation.id }}"
+	onclick="$(this).submit()"
+	data-request-update="'chat/conversation-box' : '.conversation-box'"
+	data-request-flash
+	data-request-success="onSelect()"
+	class="{{ activeConversationId == conversation.id ? 'bg-light' : '' }} list-group-item">
+	<div class="list-group-link d-flex font-size-13">
+		<img src="{{ anotherUser.avatar ? anotherUser.avatar.getThumb(50, 50, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme }}"
+			 class="rounded-circle"
+			 height="50" width="50" alt="{{ anotherUser.name ~ ' ' ~ anotherUser.surname }}">
+		<div class="flex-grow-1 align-self-center ml-2 text-muted">
+			<div class="d-flex">
+				<div class="part-name flex-grow-1 font-weight-bold text-dark m-0 mb-1">
+					{{ (anotherUser.name ~ ' ' ~ anotherUser.surname)  | slice(0, 20) }}{{ (anotherUser.name ~ ' ' ~ anotherUser.surname) | length > 20 ? '...' : '' }}
+				</div>
+				<div class="last-mess-time font-size-12">{{ lastMessage.created_at | date('H:i') }}</div>
+			</div>
+			<div class="d-flex mt-n1">
+				<div class="flex-grow-1 text-nowrap owerflow-hidden mb-0">
+					<span class="part-mess-content">
+						{{ (lastMessage.message | slice(0, 25)) }}{{ lastMessage.message | length > 25 ? '...' : '' }}
+					</span>
+				</div>
+				{% if notReadMessagesCount > 0 %}
+					<div class="mess-count badge badge-success badge-sm mb-1">{{ notReadMessagesCount }}</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</li>
+{% endif %}

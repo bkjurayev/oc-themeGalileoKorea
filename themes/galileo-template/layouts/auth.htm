@@ -1,0 +1,34 @@
+description = "This is auth template"
+
+[session]
+security = "guest"
+redirect = "main"
+
+[keylogin]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{{ 'assets/css/bootstrap.min.css' | theme }}">
+	<link rel="stylesheet" href="{{ 'assets/css/styles.css' | theme }}">
+	<link rel="stylesheet" href="{{ 'assets/css/pages/login.css' | theme }}">
+	{% styles %}
+	<title>{{ this.page.title }}</title>
+</head>
+<body>
+	
+	{% page %}
+
+	<script src="{{ 'assets/js/jQuery.min.js' | theme }}"></script>
+	<script src="{{ 'assets/js/bootstrap.min.js' | theme }}"></script>
+	<script src="{{ 'assets/js/src/popover.js' | theme }}"></script>
+	<script src="{{ 'assets/js/scripts.js' | theme }}"></script>
+	{% framework extras %}
+</body>
+</html>

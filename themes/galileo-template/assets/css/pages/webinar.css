@@ -1,0 +1,31 @@
+.webinar .before:before{
+	content: '';
+	border-top: 1px solid #e3e3e3;
+	width: 4px;
+	position: absolute;
+	transform: rotate(90deg);
+	left: -17px;
+	right: 0;
+	top: 9px;
+	margin: 0 auto;
+	height: 24px;
+}
+.form-control::placeholder{
+	color: #B5B5B5FF;
+	font-size: 12px;
+}
+.modal-footer {		    
+    border-top: 1px solid #ffffff;
+} 
+
+.custom-switch .custom-control-label::after {		
+    background-color: #ffffff;
+} 
+.custom-control-label::before {		    
+    background-color: #E5E5E7;
+    border: #E5E5E7 solid 1px;
+}
+.custom-control-input:checked~.custom-control-label::before {		    
+    border-color: #1BC369;
+    background-color: #1BC369;
+}        

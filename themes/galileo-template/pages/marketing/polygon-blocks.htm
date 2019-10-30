@@ -1,0 +1,197 @@
+title = "Polygon"
+url = "/marketing/polygon"
+layout = "main"
+is_hidden = 0
+
+[marketing]
+type = "polygon"
+
+[matrix]
+id = "{{ :id }}"
+cloneId = "{{ :cloneId }}"
+==
+<?php
+public function onBuyBlockModal() {
+    $data = Input::all();
+    $validator = Validator::make($data, [
+        'block_id' => 'required',
+    ]);
+    
+    if ($validator->fails()) {
+        throw new ValidationException($validator);
+    }
+    
+    $this['blockId'] = $data['block_id'];
+    
+    return [
+        '#mainModal .modal-content' => $this->renderPartial('popups/buy-block')
+    ];
+}
+?>
+==
+<link rel="stylesheet" href="{{'assets/css/pages/matrixs.css'|theme}}">
+
+
+
+<div class="container-fluid p-4">
+
+	<!-- Activation page -->
+	<div class="activation-page">
+		<div class="row mb-5">
+			<div class="col pt-3 pb-2">
+			<a class="mx-back" href="/marketing">
+					<span class="mr-1"><i class="fas fa-angle-left"></i></span> Назад
+				</a>
+			</div>
+			<div class="col-auto d-sm-flex">
+			<!-- 	<button 
+				data-request="matrix::onBuyClone" 
+			        			data-attach-loading
+			        			data-request-flash
+				class="btn btn-primary mb-3 mb-sm-0">
+					Купить клон в первый блок
+			</button> -->
+				
+				<div class="card border-10 ml-sm-3 p-1 px-3">
+					<div class="d-flex align-items-center">
+						<div>
+							<span class="text-muted"> <i class="far fa-wallet fa-2x"></i> </span>
+						</div>
+						<div class="border-right px-3">
+							<p class="text-dark mb-0 mx-color">Balance: {{user.balance}}</p>
+						</div>
+						<div class="px-3">
+							<span class="mx-color"> Clones: {{user.clone_count}} </span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="row blocks polygon justify-content-center">
+			
+			
+			{% for key, item in marketing.blocks %}
+	    		{% set blockClone = item.isPurchased(user) %}
+	    		
+	    		{% if blockClone %}
+		    		<div class="col-xl-15 col-lg-20 col-md-20 col-sm-30 col-60">
+						<div class="border-10 bg-white shadow d-flex mb-4 block">
+							<div class="block-left bg-primary text-white d-flex align-items-center justify-content-center"> 
+								<span> {{ key + 1 }} </span>
+							</div>
+							<div class="block-right p-lg-3 p-2 d-flex align-items-center flex-grow-1"> 
+								<div class="mx-icon active rounded-circle d-flex align-items-center justify-content-center">
+									<span class="text-white text-center rounded-circle">
+										<i class="fas fa-check"></i>
+									</span>
+								</div>
+								
+								<div class="action ml-auto"> 
+									<a href="{{ 'marketing/polygon'|page({id: item.id, cloneId: blockClone.id}) }}">Открыть</a>
+									
+									<a href="#" class="text-success mx-bay" data-request="onBuyBlockModal"
+			                            data-request-data="block_id: {{item.id}}"
+			                            data-request-flash
+			                            data-request-success="$('#mainModal').modal('show')">Купить</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="col-xl-15 col-lg-20 col-md-20 col-sm-30 col-60 mr-xl-auto ml-xl-0 ml-auto mr-auto">
+						<div class="border-10 bg-white shadow d-flex mb-4 block closed">
+							<div class="block-left bg-secondary text-white d-flex align-items-center justify-content-between"> 
+									<span> {{ key + 1 }} </span>
+								</div>
+							<div class="block-right p-lg-3 p-2 d-flex align-items-center flex-grow-1"> 
+								<div class="mx-icon rounded-circle d-flex align-items-center justify-content-between">
+									<span class="text-center rounded-circle">
+										<i class="fas fa-lock-alt fa-2x"></i>
+									</span>
+								</div>
+								
+								<div class="action ml-auto"> 
+									<button data-request="onBuyBlockModal"
+			                            data-request-data="block_id: {{item.id}}"
+			                            data-request-flash
+			                            data-request-success="$('#mainModal').modal('show')"
+			                            class="btn btn-link mx-bay"><b>Купить</b></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+	    	{% endfor %}	
+	    	
+			
+		</div>
+	</div>
+</div>
+
+<style>
+	[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+		font-size: 13px;
+	}
+	.mx-color {
+		color: #00b956 !important;
+		font-size: 13px;
+	}
+	
+	.mx-link {
+	    font-size: 16px;
+    	color: #787a7b !important;
+		
+	}
+	.mx-bay {
+	display: block;
+    margin-top: 15px;
+    background-color: #00b956;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 13px;
+	}
+	a.text-success:focus, a.text-success:hover {
+		color: #fff !important;
+		list-style: none;
+		text-decoration: none;
+	}
+	[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    background-color: #00b956;
+    border: #00b956;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+	}
+	.mx-back:hover {
+		text-decoration: none;
+		list-style: none;
+	}
+	.mx-back {
+	    font-size: 16px;
+	    color: #787a7b;
+	    /* font-weight: 300; */
+	}
+	label {
+		display: none;
+	}
+	.title-modal {
+		font-size: 18px;
+    	padding-top: 10px;
+	}
+	.activation-page .blocks .block-right .mx-icon span {
+		margin: 0 auto;
+		display: block;
+	}
+	
+	.activation-page .blocks .block-left span {
+		margin:  0 auto;
+	}
+	.modal-content {
+	    max-width: 400px;
+	   	 margin: 0 auto;
+	}
+</style>

@@ -1,0 +1,33 @@
+==
+<div class="wall-posts">
+	
+	{% for post in posts %}
+		{% if post.type == "post" %}
+		
+			{% partial 'posts/post' post = post %}
+		
+		{% elseif post.type == "image" %}
+		
+			{% partial 'posts/post-image' post = post %}
+
+		{% elseif post.type == "check" %}
+				
+			{% partial 'posts/post-check' post = post %}
+						
+		{% endif %}
+
+	{% endfor %}
+	
+	{% if posts.lastPage > currentPage %}
+		<div class="my-4 text-center">
+			<button class="btn btn-success" 
+					data-request="Posts::onRun"
+					data-request-data="currentPage: {{currentPage}}"
+					data-request-success="$(this).parent().remove();"
+					data-request-update="'posts/posts-list': '@.wall-posts'">
+				загрузить ещё
+			</button>
+		</div>
+	{% endif %}
+
+</div>

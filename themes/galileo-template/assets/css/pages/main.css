@@ -1,0 +1,208 @@
+/* =========== Main page ============ */
+.main-page .profile-header {
+	border: 1px solid #E5E5E7;
+	background-color: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+}
+
+.profile-header .img-fluid {
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+}
+
+.main-page .profile-header .position-absolute {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.main-page .profile-header .position-absolute .row {
+	height: 100%;
+}
+
+.main-page .profile-header .cover {
+	background-color: rgba(0,0,0,0.8);
+	backdrop-filter: blur(2px);
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.main-page .profile-header .avatar {
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 6px solid #00b956;
+}	
+
+.main-page .profile-header .avatar img {
+	max-width: 100%;
+}
+
+.main-page .profile-header .controls a {
+	font-size: 14px;
+	font-weight: 200;
+	line-height: 30px;
+}
+
+.main-page .post-publisher {
+	position: relative;
+}
+
+.main-page .post-publisher .input-controls {
+	position: absolute; 
+}
+
+.main-page .post-publisher textarea {
+	resize: none;
+	border-radius: 0;
+	border: 0;
+}
+
+.post-publisher .textarea-box {
+	position: relative;
+
+}
+
+.post-editor-icons {
+	position: absolute;
+	bottom: -.1rem; 
+	right: 0rem;
+}
+.main-page .top-leaders .card-header{
+  background-image: url(http://dev.galileo-intelligence.com/themes/galileo-template/assets/images/marketing/vip-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.main-page .post-publisher .post-controls {
+	border-top: 1px solid #ddd;
+}
+
+.main-page .top-leaders {
+	border-radius: 10px;
+	overflow: hidden;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #E5E5E7;
+}
+
+.main-page .top-leaders ul {
+	padding: 0;
+}
+
+.main-page .top-leaders ul li .avatar {
+	width: 45px;
+	height: 45px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 10px;
+	border: 1px solid #ddd;
+}
+
+.main-page .top-leaders ul li .info a {
+	color: #22263A;
+}
+
+.main-page .top-leaders ul li .info {
+	border-bottom: 1px solid #f3f3f3;
+}
+
+.main-page .top-leaders ul li .info * {
+	margin: 0;
+}
+
+.main-page .card.banner {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.main-page .wall-posts .card-header .avatar {
+	width: 45px;
+	height: 45px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+.main-page .wall-posts .card-header .info * {
+	margin: 0;
+}
+
+.main-page .wall-posts .card-footer > div {
+	margin-right: 20px;
+	font-size: 13px;
+}
+
+.main-page .wall-posts .card-footer > div a {
+	margin-right: 3px;
+}
+
+.main-page .wall-posts .card-footer a.active {
+	color: #12924E;
+}
+
+.wall-posts .post .card-img img {
+	max-width: 100%;
+	max-height: calc(100vh - 6rem);
+	width: auto;
+	object-fit: contain;
+}
+
+.wall-posts .post .card-img.check img:first-child {
+	max-height: 100%;
+}
+
+.main-page .online::before{
+	content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: #12924E;
+    height: 7px;
+    width: 7px;
+    top: 80px;
+    left: 55px;
+}
+
+@media only screen and (max-width: 960px) {
+	.main-page .top-leaders h6{font-size: 11px!important;}
+	.main-page .top-leaders a{font-size: 9px!important;}
+	.main-page .top-leaders p{font-size: 9px!important;}
+	.main-page .top-leaders .card-body {padding: 5px!important;}    
+	.main-page .online::before {left: 45px;}
+}
+@media only screen and (max-width: 720px) {
+	.main-page .top-leaders h6{font-size: 11px!important;}
+	.main-page .top-leaders a{font-size: 9px!important;}
+	.main-page .top-leaders p{font-size: 9px!important;}
+	.main-page .top-leaders .card-body {padding: 5px!important;}    
+	.main-page .online::before {left: 45px;}
+	.main-page .wall-posts .card-body .card-text{font-size: 12px;}
+	.main-page .card .info h6{font-size: 12px;}
+	.main-page .card-footer i, .main-page .card-footer span{font-size:10px;}
+	.main-page .card-footer{padding: 10px;}
+}
+@media only screen and (max-width: 540px) {
+	.main-page .top-leaders h6{font-size: 11px!important;}
+	.main-page .top-leaders a{font-size: 9px!important;}
+	.main-page .top-leaders p{font-size: 9px!important;}
+	.main-page .top-leaders .card-body {padding: 5px!important;}    
+}
+
+@media (max-width: 992px) {
+	.main-page .profile-header .cover {
+	    border-top-left-radius: 10px;
+	    border-bottom-left-radius: 10px;
+	}
+}
+
+@media (max-width: 576px) {
+	.main-page .profile-header .avatar {
+		width: 60px;
+		height: 60px;
+	}
+}
+
+/* =========== End main page ============ */

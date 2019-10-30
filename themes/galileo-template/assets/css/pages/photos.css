@@ -1,0 +1,90 @@
+.photos-page .photo-item {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+
+.photos-page .photo-info .controls a {
+	font-size: 12px;
+}
+
+
+
+
+
+/* Maks styles */
+.mx-img-div {
+	width: 100px;
+	height: 100px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	background-color: #F5F5F5;
+	position: relative;
+}
+
+.mx-img-div .mx-avatar {
+	width: 100px;
+	height: 100px;
+	box-sizing: border-box;
+}
+
+.mx-img-div .mx-avatar img {
+	width: 100px;
+	height: 100px;
+	box-sizing: border-box;
+}
+
+.mx-main-modal .mx-end-btn {
+	position: absolute;	
+	top: -4px;
+	right: -4px;
+}
+
+.mx-main-modal .mx-end-btn i{
+	color: #e81702;
+}
+.mx-main-modal .mx-modal {
+	color: #928f8f;
+	padding-bottom: 0;
+}
+.mx-main-modal .modal-header .close {
+    font-size: 2rem;
+    margin-top: -15px;
+}
+.mx-main-modal .modal-content {
+	padding: 1rem;
+	border-radius: 40px !important;
+    padding-top: 2rem;
+    border-bottom: none !important;
+}
+.mx-main-modal .modal-header {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+.mx-main-modal .modal-body {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+.mx-main-modal .modal-dialog {
+    max-width: 600px !important;
+}
+.mx-main-modal .form-control {
+	background-color: #fbf7f7;
+}
+.mx-main-modal .form-group {
+	margin-bottom: 2rem;
+	margin-top: 0.5rem;
+}
+.mx-main-modal .modal-footer {
+	border-top: 0;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-right: 1.9rem;
+}
+.mx-main-modal .modal-title {
+	font-size: 22px;
+}
+.mx-main-modal .btn {
+    font-size: 1rem
+}
+

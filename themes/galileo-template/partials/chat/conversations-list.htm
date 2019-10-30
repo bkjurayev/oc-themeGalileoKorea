@@ -1,0 +1,7 @@
+==
+{% set activeConversationId = conversation.id %}
+{% for conversation in conversations %}
+	
+	{% partial 'chat/conversation-list-item' conversation = conversation activeConversationId = activeConversationId %}
+
+{% endfor %}

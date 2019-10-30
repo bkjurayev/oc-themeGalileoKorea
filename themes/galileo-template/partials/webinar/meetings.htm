@@ -1,0 +1,12 @@
+==
+<?php
+function onStart() {
+	$this['user'] = Auth::getUser();
+}
+?>
+==
+{% for meeting in user.meetings().orderByDesc('id').get() %}
+
+	{% partial 'webinar/meeting-item' meeting = meeting %}
+
+{% endfor %}

@@ -1,0 +1,43 @@
+==
+<div class="card post-publisher border-radius mb-3">
+	<form data-request="Posts::onAddPost"
+		data-request-files
+		data-request-flash
+		data-request-update="'posts/post': '^.wall-posts'"
+		data-request-success="$(this).trigger('reset');">
+		
+		<div class="textarea-box">
+			<textarea class="form-control text-left bg-transparent" name="content" placeholder="Что у вас нового?" rows="1" id="textarea"></textarea>					
+			<span class="ml-auto mr-3 muted-text post-editor-icons text-success">
+				<i class="fal fa-smile mr-2"></i>
+				<label for="addImage" class="text-center" style="cursor:pointer">
+					<i class="far fa-paperclip"></i>
+				</label>
+				<input type="file" name="images[]" hidden id="addImage" accept="image/*">
+			</span>
+		</div>
+		<div class="post-controls p-2 text-right" style="display: none;">
+			<button class="btn btn-success btn-sm">Опубликовать</button>
+		</div>
+	</form>
+</div>
+
+{% put scripts %}
+	<script>
+		$(document).on('click', '#textarea', function(event){
+			var textarea = event.currentTarget;
+			$(textarea).css('height', '80px');
+			$(textarea).css('height', textarea.scrollHeight);
+			$(this).parent().next().show();
+		});
+		$(document).click(function(event) {
+		  //if you click on anything except the modal itself or the "open modal" link, close the modal
+		  if (!$(event.target).closest("#textarea, .post-publisher").length) {
+		  	if (!$('#textarea').val()) {
+		      $("body").find("#textarea").css("height", '36px');
+		      $("body").find("#textarea").parent().next().hide();
+		  	}
+		  }
+		});
+	</script>
+{% endput %}

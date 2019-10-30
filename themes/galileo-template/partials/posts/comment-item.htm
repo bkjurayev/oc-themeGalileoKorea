@@ -1,0 +1,34 @@
+==
+{% set author = comment.author %}
+<div class="col p-2">
+	<div class="comment-item form-row">
+		<div class="user-avatar col-auto">
+			<img src="{{ author.avatar ? author.avatar.getThumb(40, 40, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme }}" alt="" class="rounded-circle mt-auto">
+		</div>
+		<div class="col">
+			<div class="comment-content bg-light shadow-sm border border-radius p-2">
+				<p class="mb-0 d-flex">
+					<span class="text-success">{{ author.name ~ ' ' ~ author.surname }}</span>
+					<span class="ml-auto" style="color: #a7aaad!important;">{{ comment.created_at | date('d.m.y') }}</span>
+					{% if user.id == author.id or user.id == post.author.id %}
+						<span class="ml-2">
+							<a  href="javascript:;"
+								data-request="Posts::onDeleteComment"
+								data-request-data="id: {{ comment.id }}"
+								data-request-success="$(this).parents('.col').remove()"
+								data-request-confirm="Вы действительно хотите удалить комментарий?"
+								title="Удалить" style="color: #a7aaad!important;">
+								<i class="far fa-times"></i>
+							</a>
+						</span>
+					{% endif %}
+				</p>
+				<hr class="my-1">
+				<p class="text-muted mb-0" style="font-size: 12,5px!important;">
+					{{ comment.content }}
+				</p>
+			</div>
+			
+		</div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+title = "Feed"
+url = "/feed"
+layout = "main"
+is_hidden = 0
+
+[Posts]
+recordsPerPage = 20
+displayedPosts = "friends"
+==
+<link rel="stylesheet" href="{{'assets/css/pages/main.css'|theme}}">
+
+<div class="main-page py-3">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-45 pr-0">
+				<div class="container-fluid p-0">
+					<div class="row">
+						<div class="col-xl-42 col-lg-38 pr-0">
+							{% partial 'posts/posts-list' %}
+						</div>
+			
+			
+						<div class="col-xl-18 col-lg-22">
+							<div class="card banner">
+								<img src="{{'assets/images/right-img.png" class="img-fluid'|theme}}" alt="">
+							</div>
+						</div>
+					</div>
+			
+				</div>
+			</div>
+			
+			<div class="col-xl-15">
+				<div class="sticky-top" style="top: 60px; z-index: 0;">
+					{% partial 'blocks/top-leaders' %}
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>

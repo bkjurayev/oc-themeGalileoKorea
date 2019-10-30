@@ -1,0 +1,24 @@
+/* =========== Login page ============ */
+#login{
+	background: url(../../images/bg_login.png);
+	background-size: cover;
+	height: 100vh;
+	display: flex; 
+    align-items: center;
+}
+#login .bg-success{border-radius: 24px 0px 0px 24px;}
+#login .bg-white{border-radius: 0px 24px 24px 0px;}
+#login .bg-success .small{line-height: 2;}
+#login .form-control{	font-size: 14px;padding: 22px;}
+
+@media only screen and (max-width: 960px) {
+  #login .form-control{padding: 10px!important;}
+  #login .col-lg-15{padding: 10px 12px!important;}
+  #login h4{font-size: 14px;}
+  #login a.btn-success{font-size: 12px;padding: 5px 0px!important;}	
+  #login .bg-success .small {line-height: 1.2;}
+  #login .form-control {font-size: 10px;}
+  #login label.form-check-label{font-size:8px;}
+  #login p.text-muted{font-size: 10px;}
+  #login p.small{font-size: 11px;}
+}

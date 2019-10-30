@@ -1,0 +1,77 @@
+description = "This is main template"
+
+[session]
+security = "user"
+redirect = "auth/signin"
+
+[helper]
+
+[matrix]
+id = "{{ :id }}"
+cloneId = "{{ :cloneId }}"
+==
+<?php
+function onActivateModal() {
+	return [
+        '#mainModal .modal-content' => $this->renderPartial('popups/activate')
+    ];
+}
+?>
+==
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{{ 'assets/fontawesome/css/all.css' | theme }}">
+	<link rel="stylesheet" href="{{ 'assets/css/bootstrap.min.css' | theme }}">
+	<link rel="stylesheet" href="{{ 'assets/css/select2.full.min.css' | theme }}">
+	<link rel="stylesheet" href="{{ 'assets/css/styles.css' | theme }}">
+	
+	{% styles %}
+	
+	<title>{{ this.page.title }}</title>
+</head>
+<body>
+	
+	{% partial 'site/header' %}
+	
+	<!-- wrapper -->
+	<div class="wrap d-flex align-items-stretch">
+		<!-- left sidebar -->
+		<div class="left-sidebar">
+			{% partial 'site/left-sidebar' %}
+		</div>
+		<!-- end left sidebar -->
+
+		<!-- main -->
+		<div class="main flex-grow-1">
+			{% page %}
+		</div>
+		<!-- end main -->
+	</div>
+	<!-- end wrapper -->
+
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  	loading...
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="{{ 'assets/js/jQuery.min.js' | theme }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script src="{{ 'assets/js/bootstrap.min.js' | theme }}"></script>
+	<script src="{{ 'assets/js/src/popover.js' | theme }}"></script>
+	<script src="{{ 'assets/js/select2.full.min.js' | theme }}"></script>
+	<script src="{{ 'assets/js/scripts.js' | theme }}"></script>
+	{% framework extras %}
+	{% scripts %}
+</body>
+</html>

@@ -1,0 +1,87 @@
+==
+<form 
+	data-request="onTransfer" 
+	data-request-update="'ofice/transfer-form': '#transferstab'" 
+	data-request-flash
+	style="max-width: 600px"
+	class="bg-white border-radius m-auto shadow p-4">
+
+	<div id="onusercheck-result"></div>
+	
+	
+	<div class="text-center mb-4">
+		<img class="mx-img" src="/themes/galileo-template/assets/images/photo_2019-10-18_12-04-14.png" alt="">
+	</div>
+
+	
+	<div>
+		<div class="mx-main-block d-block d-md-flex justify-content-between">
+			<div class="mx-left d-flex align-items-center">
+				<p class="mx-balans"><img src="https://icon-library.net/images/icon-wallet/icon-wallet-8.jpg" class="mx-purse" style="max-height: 50px;" alt=""><strong>{{user.balance|default(0)}}</strong><img class="mx-g" src="/themes/galileo-template/assets/images/G.png" alt=""></p>
+			</div>
+			<div class="mx-right">
+				<div class="form-group">
+					<input class="form-control"
+						data-request="onUserCheck" data-track-input="500"
+						required name="user_id" id="userIdInput" placeholder="ID" type="number">
+				</div>
+				<div class="form-group">								
+					<input class="form-control" required name="amount" id="amountInput" placeholder="Сумма">
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="text-center text-md-right">
+		<button data-attach-loading 
+			data-request="onTransferHistory"
+			data-request-update="'ofice/transfer-table': '#transfer-table'" 
+			class="btn btn-link mx-btn-histori"> <i class="la la-plus"></i>История</button>
+				
+			<button class="btn btn-success mx-btn-histori">Перевод</button>
+		</div>
+	</div>
+	
+</form>
+
+<style>
+	.mx-g {
+		width: 35px;
+	    height: 35px;
+	    align-items: center;
+	    margin-top: 22px;
+	    margin-left: 0px;
+	}
+	.mx-img {
+		width: 100px;
+	}
+	.mx-balans {
+		margin: 0;
+		margin-top: -15px;
+		display: flex;
+		margin-bottom: 8px;
+	}
+	.mx-right {
+		width: 59%;
+	}
+
+	.mx-balans strong {
+		color: #00b956;
+	    padding-top: 23px;
+	    display: block;
+	    padding-left: 8px;
+	    font-size: 20px;
+	    font-weight: 600;
+	}
+	.mx-btn-histori {
+		font-size: 13px;
+	}
+	.form-control::placeholder{
+		color: #c3c3c3;
+	}
+	@media screen and (max-width: 600px) {
+		.mx-right {
+			width: 100%;
+		}
+	}
+</style>

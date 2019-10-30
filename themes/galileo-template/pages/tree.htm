@@ -1,0 +1,33 @@
+title = "tree"
+url = "/tree"
+layout = "main"
+is_hidden = 0
+==
+<?php
+use Shohabbos\Portal\Models\Tree;
+
+function onStart() {
+	$this['tree'] = Tree::where('parent_id', 0)->orderBy('block_id')->get();
+}
+
+
+function onLoadTree() {
+	$this['tree'] = Tree::where('parent_id', input('parent_id'))->orderBy('block_id')->get();
+}
+?>
+==
+<br>
+<br>
+<div id="#tree" class="container">
+	{% partial 'tree-list' tree=tree %}
+</div>
+
+<style>
+	#tree ul {
+		margin-left: 20px;	
+	}
+	
+	#tree ul li {
+		padding: .5rem;
+	}
+</style>

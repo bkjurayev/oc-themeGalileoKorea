@@ -1,0 +1,78 @@
+==
+{% set author = post.author %}
+<div class="post card border-radius mb-3">
+	<div class="card-header px-2 p-1 d-flex bg-transparent">
+		<div class="avatar">
+			<a href="#">
+				<img class="img-fluid" src="{{ author.avatar ? author.avatar.getThumb(50, 50, {mode: 'crop'}) : 'assets/images/no-avatar.jpg'|theme }}" alt="{{ author.name ~ ' ' ~ author.surname }}">
+			</a>
+		</div>
+		<div class="info flex-grow-1">
+			<h6 class="mt-1">
+				<a href="#" class="text-dark"> {{ author.name ~ ' ' ~ author.surname }} </a> 
+				<img class="img-fluid" src="{{ author.getLevel('vip') }}" style="max-width: 30px; margin-top: -10px" alt="">
+			</h6>
+			<small style="color: #a7aaad!important;">{{ post.created_at | date('d.m.y') }}</small>
+		</div>
+		{% if user.id == author.id %}
+			<div class="icon d-flex">
+				<span class="ml-2">
+					<a  href="javascript:;" 
+						data-request="Posts::onDeletePost"
+						data-request-data="id: {{ post.id }}"
+						data-request-flash
+						data-request-update="'posts/posts-list': '.wall-posts'"
+						data-request-confirm="Вы действительно хотите удалить чек?"
+						title="Удалить" style="color: #a7aaad!important;">
+						<i class="far fa-times"></i>
+					</a>
+				</span>
+				{#<i class="far fa-ellipsis-v muted-text"></i>#}
+			</div>
+		{% endif %}
+	</div>
+	
+	{#{% if user.id == '777' %}
+	
+		
+		{% set prop = post.properties %}
+		<div class="card-img text-center check {{ prop.check_type ? prop.check_type : 'vip' }}">
+			<img src="{{ ('assets/images/check-' ~ (prop.check_type ? prop.check_type : 'vip') ~ '.png') | theme }}" alt="{{ post.title }}">
+			<div class="amount {{ prop.check_type ? 'font-weight-bold' }}">
+				{{ prop.amount }}
+			</div>
+			<img class="user-avatar rounded-circle" src="{{ author.avatar ? author.avatar.getThumb(100, 100, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme }}" alt="">
+			<div class="user-block">
+				<div class="user-fullname font-weight-bold">
+					{{ author.name ~ ' ' ~ author.surname }}
+				</div>
+				<div class="date text-left ml-1 mt-n1">
+					{{ post.created_at | date('d.m.Y') }}
+				</div>
+			</div>
+		</div>
+	
+	{% else %} #}
+		
+	{% set prop = post.properties %}
+	<div class="card-img text-center check {{ prop.check_type ? prop.check_type : 'old' }}">
+		<img src="{{ ('assets/images/check-' ~ (prop.check_type ? prop.check_type : 'old') ~ '.png') | theme }}" alt="{{ post.title }}">
+		<div class="amount {{ prop.check_type ? 'font-weight-bold' }}">
+			{{ prop.amount }}
+		</div>
+		<img class="user-avatar rounded-circle" src="{{ author.avatar ? author.avatar.getThumb(100, 100, {mode: 'crop'}) : 'assets/images/no-avatar.jpg' | theme }}" alt="">
+		<div class="user-block">
+			<div class="user-fullname {{ prop.check_type ? 'font-weight-bold' }}">
+				{{ author.name ~ ' ' ~ author.surname }}
+			</div>
+			<div class="date text-left ml-1 {{ prop.check_type ? 'mt-n2' }}">
+				{{ post.created_at | date('d.m.Y') }}
+			</div>
+		</div>
+	</div>
+		
+	{# {% endif %} #}
+
+	{% partial 'posts/post-footer' post = post %}
+
+</div>

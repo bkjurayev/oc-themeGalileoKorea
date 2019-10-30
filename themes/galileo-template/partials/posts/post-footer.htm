@@ -1,0 +1,44 @@
+==
+<div class="card-footer bg-transparent d-flex align-items-center">
+	<div>
+		<a  href="javascript:;"
+			data-request="Posts::onToggleLike"
+			data-request-data="id: {{ post.id }}"
+			data-request-flash
+			class="muted-text text-decoration-none">
+			<i class="fal fa-heart"></i>
+		</a>
+		<span id="likesCount{{post.id}}" class="muted-text"> {{ post.likes.count }} </span>
+	</div>
+	
+	<div>
+		<a  href="javascript:;"
+			onclick="$(this).parents('.card-footer').next().fadeToggle()"
+			class="muted-text text-decoration-none">
+			<i class="far fa-comment-alt"></i>
+		</a>
+		<span class="muted-text"> {{ post.comments.count }} </span>
+	</div>
+</div>
+{% if user.id == 777 %}
+	<div class="card-footer bg-transparent p-2" style="display: none;">
+		<div class="comments-box mr-0" style="overflow: auto; max-height: 20rem;" id="commentList{{post.id}}">
+				{% partial 'posts/comments-list' post=post comments=post.comments %}
+		</div>
+		<form class="form-row comment-send-box m-0 pt-2 border-top"
+			data-request="Posts::onAddComment"
+			data-request-data="id: {{ post.id }}"
+			data-request-flash
+			data-request-update="'posts/comment-item': '@#commentList{{ post.id }}', "
+			data-request-success="$(this).trigger('reset');">
+			<div class="col">
+				<textarea type="text" name="content" class="form-control form-control-sm border-radius auto-height" rows="1" placeholder="Оставте свой комментарий..."></textarea>
+			</div>
+			<div class="col-auto d-flex align-items-end">
+				<button type="submit" class="btn btn-success btn-sm">
+					Отправить
+				</button>
+			</div>
+		</form>
+	</div>
+{% endif %}

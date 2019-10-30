@@ -1,0 +1,121 @@
+title = "Activation"
+url = "/marketing/activation"
+layout = "main"
+is_hidden = 0
+
+[marketing]
+type = "activation"
+
+[matrix]
+id = "{{ :id }}"
+cloneId = "{{ :cloneId }}"
+==
+<link rel="stylesheet" href="{{'assets/css/pages/matrixs.css'|theme}}">
+
+
+
+<div class="container-fluid p-4">
+
+	<!-- Activation page -->
+	<div class="activation-page">
+		<div class="row mb-5">
+			<div class="col pt-3 pb-2">
+				<a class="mx-back" href="/marketing" class="text-dark h5 text-nowrap">
+					<span class="mr-1"><i class="fas fa-angle-left"></i></span> Назад
+				</a>
+			</div>
+			<div class="col-auto d-sm-flex">
+				<button 
+					data-request="matrix::onBuyClone" 
+        			data-attach-loading
+        			data-request-flash
+					class="btn btn-primary mb-3 mb-sm-0 mx-klon">
+						Купить клон в первый блок
+				</button>
+				
+				<div class="card border-10 ml-sm-3 p-1 px-3">
+					<div class="d-flex align-items-center">
+						<div>
+							<span class="text-muted"> <i class="far fa-wallet fa-2x"></i> </span>
+						</div>
+						<div class="border-right px-3">
+							<p class="text-dark mb-0 mx-klon ">Balance: {{user.balance}}</p>
+						</div>
+						<div class="px-3">
+							<span class="mx-klon mx-clon "> Clones: {{user.clone_count}} </span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="row blocks justify-content-center">
+			
+			
+			{% for key, item in marketing.blocks %}
+	    		{% set blockClone = item.isPurchased(user) %}
+	    		
+	    		{% if blockClone %}
+		    		<div class="col-xl-15 col-lg-20 col-md-20 col-sm-30 col-60">
+						<div class="border-10 bg-white shadow d-flex mb-4 block">
+							<div class="block-left bg-primary text-white d-flex align-items-center justify-content-center"> 
+								<span> {{ key + 1 }} </span>
+							</div>
+							<div class="block-right p-lg-4 p-2 d-flex align-items-center flex-grow-1"> 
+								<div class="mx-icon active rounded-circle d-flex align-items-center justify-content-center">
+									<span class="text-white text-center rounded-circle">
+										<i class="fas fa-check"></i>
+									</span>
+								</div>
+								<div class="action ml-auto mr-3"> <a href="{{ 'marketing/activation'|page({id: item.id, cloneId: blockClone.id}) }}">Открыть</a></div>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="col-xl-15 col-lg-20 col-md-20 col-sm-30 col-60 mr-xl-auto ml-xl-0 ml-auto mr-auto">
+						<div class="border-10 bg-white shadow d-flex mb-4 block">
+							<div class="block-left bg-secondary text-white d-flex align-items-center justify-content-center"> 
+									<span> {{ key + 1 }} </span>
+								</div>
+							<div class="block-right p-lg-4 p-2 d-flex align-items-center flex-grow-1"> 
+								<div class="mx-icon rounded-circle d-flex align-items-center justify-content-center">
+									<span class="text-muted text-center rounded-circle">
+										<i class="fas fa-lock-alt fa-2x"></i>
+									</span>
+								</div>
+								
+								<div class="action ml-auto mr-3"> Закрыть </div>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+	    	{% endfor %}	
+	    	
+			
+		</div>
+	</div>
+</div>
+<style>
+	.mx-back {
+		font-size: 16px;
+		color: #787a7b;
+		    font-weight: 300;
+	}
+	.mx-back:hover {
+		text-decoration: none;
+		list-style: none;
+		color: #007bff;
+		
+	}
+	.mx-klon {
+		font-size: 13px;
+	}
+	.border-right p {
+		color: #00b956 !important;
+	}
+	.mx-clon {
+		color: #00b956 !important;
+	}
+</style>
